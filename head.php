@@ -8,6 +8,9 @@
 	$(function() {
 
 			$( "#tabs" ).tabs();
+			$( "#notascrearnota" ).tabs();
+			$( "#selectornotas" ).buttonset();
+			$( ".nota_element").width(400).height(600);
 
 		});
 </script>
