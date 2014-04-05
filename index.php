@@ -1,7 +1,8 @@
 <html>
 	<head>
+	<?php include 'head.php' ?>
 	</head>
 	<body>
-		<h1>Hola Mundo!</h1>
+		<?php include 'body.php' ?>
 	</body>
 </html>

@@ -4,6 +4,14 @@
 
 <script>
 	$(function() {
+
+			$( "#tabs" ).tabs();
+
+		});
+</script>
+
+<!-- <script>
+	$(function() {
 		
 		$( "#accordion" ).accordion();
 		
@@ -103,9 +111,9 @@
 			}
 		);
 	});
-	</script>
+	</script> -->
 
-	<style>
+<!--	<style>
 	body{
 		font: 62.5% "Trebuchet MS", sans-serif;
 		margin: 50px;
@@ -144,4 +152,4 @@
 	.fakewindowcontain .ui-widget-overlay {
 		position: absolute;
 	}
-	</style>
+	</style> -->
