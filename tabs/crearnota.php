@@ -54,7 +54,9 @@
 <input type="text" name="precio"> €<br />
 
 </fieldset>
+<br />
 <fieldset>
+	<legend>Notas</legend>
 	<div id="notascrearnota">
 	<ul>
 		<li><a href="#ncn_1">General</a></li>
@@ -88,8 +90,5 @@
 <label for="file[]">Archivos:</label>
 <input type="file" name="file[]" multiple="multiple"><br>
 </fieldset>
-<br />
-<a href="?p=vistanotas&a=t&e=t"><button>Cancelar</button></a>
-<input type="submit" name="submit" value="Guardar">
 </form>
 </div>
