@@ -1,5 +1,4 @@
-<h3>Crear Nota</h3>
-
+<div id="dia-nuevanota">
 <form action="programa.php?p=procesarcrearnota" method="post" enctype="multipart/form-data">
 	<br />
 		<fieldset>
@@ -93,3 +92,4 @@
 <a href="?p=vistanotas&a=t&e=t"><button>Cancelar</button></a>
 <input type="submit" name="submit" value="Guardar">
 </form>
+</div>

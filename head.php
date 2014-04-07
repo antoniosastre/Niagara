@@ -12,6 +12,21 @@
 			$( "#selectornotas" ).buttonset();
 			$( ".nota_element").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
 
+			$("#dia-nuevanota").dialog({
+				autoOpen: false,
+				modal: true,
+				buttons: [
+					{text: "Cancelar", click: function() { $(this).dialog("close");}},
+					{text: "Guardar", click: function() { $(this).dialog("close");}}
+					],
+				hide: true,
+				position: "top+10",
+				width: 800
+			});
+			$("#abrir-nuevanota").button().click(function () {
+				$("#dia-nuevanota").dialog("open");
+			});
+
 		});
 </script>
 
@@ -136,6 +151,9 @@
 	  zoom:1; /* For IE 6/7 (trigger hasLayout) */
 	}
 
+	#tabla-menu-notas {
+		font: 100% "Trebuchet MS", sans-serif;
+	}
 	</style>
 
 <!--		
