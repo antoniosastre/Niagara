@@ -10,7 +10,7 @@
 			$( "#tabs" ).tabs();
 			$( "#notascrearnota" ).tabs();
 			$( "#selectornotas" ).buttonset();
-			$( ".nota_element").width(400).height(600);
+			$( ".nota_element").width(400).height(600).css({'float':'left', 'margin':'15px'});
 
 		});
 </script>

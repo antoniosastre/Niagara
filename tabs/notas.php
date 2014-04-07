@@ -7,6 +7,4 @@
 		<input type="radio" id="sn_4" name="sn"><label for="sn_4">Archivadas</label>
 	</div>
 
-<div class="nota_element" style="background-color:#D6D6FF;">Hola</div>
-<div class="nota_element" style="background-color:#D6D6FF;">Adios</div>
-<div class="nota_element" style="background-color:#D6D6FF;">Nota 3</div>
+<?php include 'notas/elements.php' ?>
