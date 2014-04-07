@@ -10,7 +10,7 @@
 			$( "#tabs" ).tabs();
 			$( "#notascrearnota" ).tabs();
 			$( "#selectornotas" ).buttonset();
-			$( ".nota_element").width(400).height(600).css({'float':'left', 'margin':'15px'});
+			$( ".nota_element").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
 
 		});
 </script>
@@ -122,6 +122,18 @@
 	body{
 		font: 62.5% "Trebuchet MS", sans-serif;
 		margin: 50px;
+	}
+
+	#notacontainer:before,
+	#notacontainer:after {
+ 		 content:"";
+  		display:table;
+	}
+	#notacontainer:after {
+		  clear:both;
+	}
+	#notacontainer {
+	  zoom:1; /* For IE 6/7 (trigger hasLayout) */
 	}
 
 	</style>
