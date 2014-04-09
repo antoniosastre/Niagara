@@ -1,4 +1,5 @@
-<div class="elemento-nota" style="background:#ccc;">
+<div class="elemento-nota" style="background:#ccc;border-style:solid;
+border-width:1px;">
 <?php
 echo "ID: ".$nota['id']."<br />";
 echo "Editando: ".$nota['isediting']."<br />";
