@@ -1,6 +1,6 @@
 <?php
 
-date_default_timezone_set('UTC+2');
+date_default_timezone_set('Europe/Madrid');
 
 $conexion = mysqli_connect("localhost", "root", "root", "notas");
 
@@ -15,12 +15,14 @@ if (mysqli_connect_errno($conexion))
 
  echo "</div>";
 
-/** function todasnotas(){
+function todasnotas(){
 	global $conexion;
 	$que = "SELECT * FROM notas ORDER BY prioridad DESC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
+
+/*
 
 function todosclientes(){
 	global $conexion;

@@ -10,7 +10,7 @@
 			$( "#tabs" ).tabs();
 			$( "#notascrearnota" ).tabs();
 			$( "#selectornotas" ).buttonset();
-			$( ".nota_element").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
+			$( ".elemento-nota").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
 
 			$("#dia-nuevanota").dialog({
 				autoOpen: false,

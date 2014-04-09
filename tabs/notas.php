@@ -16,5 +16,16 @@
 </table>
 	<div style="clear: both;"></div>
 <div id="notacontainer">
-<?php include 'notas/elements.php' ?>
+
+<?php 
+
+	$resultado = todasnotas();
+	 while($nota = mysqli_fetch_array($resultado)){
+ 
+  include 'notas/element.php';
+  		
+  }
+  
+?>
+
 </div>
