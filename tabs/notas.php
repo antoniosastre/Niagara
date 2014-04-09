@@ -19,8 +19,8 @@
 
 <?php 
 
-	$resultado = todasnotas();
-	 while($nota = mysqli_fetch_array($resultado)){
+	$resulta = todasnotas();
+	 while($nota = mysqli_fetch_array($resulta)){
  
   include 'notas/element.php';
   		

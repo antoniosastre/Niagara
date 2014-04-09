@@ -32,4 +32,51 @@ echo "Pre: ".$nota['precio']."<br />";
 	</div>
 </div>
 
+<div class="trabajos-de-nota">
+
+	<?php 
+	$count = 1;
+
+	echo "<ul>";	
+
+	//Trabajos de Imprenta.
+	$resultado = trabajosImp($nota['id']);
+	 	while($trabajoImp = mysqli_fetch_array($resultado)){
+ 			echo "<li><a href=\"#tdn-".$nota['id']."-".$count."\">".$count." - Imp.</a></li>";
+ 			$count++;
+ 			}
+ 	//Trabajos de CD/DVD.
+ 		$resultado = trabajosCd($nota['id']);
+	 	while($trabajoCd = mysqli_fetch_array($resultado)){
+ 			echo "<li><a href=\"#tdn-".$nota['id']."-".$count."\">".$count." - CD</a></li>";	
+ 			$count++;
+ 		}
+
+  	echo "</ul>";
+  	$count = 1;
+  	//Trabajos de Imprenta.
+
+  		$resultado = trabajosImp($nota['id']);
+	 	while($trabajoImp = mysqli_fetch_array($resultado)){
+ 			echo "<div id=\"tdn-".$nota['id']."-".$count."\">";
+ 			echo $trabajoImp['notas'];
+ 			echo "</div>";
+ 			$count++;
+ 		}
+
+ 	//Trabajos de CD/DVD.
+
+  		$resultado = trabajosCd($nota['id']);
+	 	while($trabajoCd = mysqli_fetch_array($resultado)){
+ 			echo "<div id=\"tdn-".$nota['id']."-".$count."\">";
+ 			echo $trabajoCd['notas'];
+ 			echo "</div>";
+ 			$count++;
+
+  }
+  
+?>
+
+</div>
+
 </div>

@@ -9,6 +9,7 @@
 
 			$( "#tabs" ).tabs();
 			$( ".notas-de-nota" ).tabs();
+			$( ".trabajos-de-nota" ).tabs();
 			$( "#notascrearnota" ).tabs();
 			$( "#selectornotas" ).buttonset();
 			$( ".elemento-nota").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});

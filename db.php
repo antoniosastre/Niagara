@@ -22,6 +22,20 @@ function todasnotas(){
 	return $res;
 }
 
+function trabajosImp($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_imp WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosCd($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_cddvd WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
 /*
 
 function todosclientes(){
