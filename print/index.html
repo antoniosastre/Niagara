@@ -1,0 +1,41 @@
+<html>
+<!-- License:  LGPL 2.1 or QZ INDUSTRIES SOURCE CODE LICENSE -->
+<head><title>QZ Print Plugin</title>
+<script type="text/javascript" src="js/deployJava.js"></script>
+<script type="text/javascript" src="funciones.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/html2canvas.js"></script>
+	<script type="text/javascript" src="js/jquery.plugin.html2canvas.js"></script>
+	</head>
+	<body id="content" bgcolor="#FFF380">
+	<div style="position:absolute;top:0;left:5;"><h1 id="title">QZ Print Plugin</h1></div><br /><br /><br />
+	<table border="1px" cellpadding="5px" cellspacing="0px"><tr>
+
+	<td valign="top"><h2>All Printers</h2>
+	<input type="button" onClick="findPrinter()" value="Detect Printer"><br />
+	<input id="printer" type="text" value="TM-T20-RAW" size="15"><br />
+	<!-- NEW QZ APPLET TAG USAGE -- RECOMMENDED -->
+	<!--
+	<applet id="qz" archive="./qz-print.jar" name="QZ Print Plugin" code="qz.PrintApplet.class" width="55" height="55">
+	<param name="jnlp_href" value="qz-print_jnlp.jnlp">
+	<param name="cache_option" value="plugin">
+	<param name="disable_logging" value="false">
+	<param name="initial_focus" value="false">
+	</applet><br />
+	-->
+	
+	<!-- OLD JZEBRA TAG USAGE -- FOR UPGRADES -->
+    <!-- 
+	<applet name="jzebra" archive="./qz-print.jar" code="qz.PrintApplet.class" width="55" height="55">
+	<param name="jnlp_href" value="qz-print_jnlp.jnlp">
+	<param name="cache_option" value="plugin">
+	<param name="disable_logging" value="false">
+	<param name="initial_focus" value="false">
+	<param name="printer" value="zebra">
+	</applet><br />
+	-->
+
+	<input type="button" onClick="printESCP()" value="Print ESCP" /><br />
+
+	</body><canvas id="hidden_screenshot" style="display:none;"></canvas>
+</html>
