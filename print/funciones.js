@@ -295,7 +295,28 @@
 		// Automatically gets called when "qz.appendImage()" is finished.
 		//window["qzDoneAppending"] = function() {
 			// Append the rest of our commands
-            qz.append('\nSara y Antonio\n 31/12/2009\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+            qz.append('\nSara y Antonio\n 31/12/2009\n');
+			qz.append('\n***********************************************-\n');
+            qz.append("\x1B\x40"); // 1
+			qz.append("\x1B\x21\x77"); // 2
+			qz.append(" International \r\n");
+			qz.append(" Company \r\n");
+			qz.append("\x1B\x21\x01"); // 3
+			qz.append(" ************************************************** \r\n");
+			qz.append("Info: 42972\r\n");
+			qz.append("Info: Kommm\r\n");
+			qz.append("Datum: 14:00 01/02\r\n");
+			qz.append(" -------------------------------------------------- \r\n");
+			qz.append("Info: 42972\r\n");
+			qz.append("Info: Kommm\r\n");
+			qz.append("Datum: 14:00 01/02\r\n");
+			qz.append(" -------------------------------------------------- \r\n");
+			qz.append(" \r\n");
+			qz.append(" \r\n");
+			qz.append(" \r\n");
+			qz.append(" \r\n");
+			qz.append("\x1D\x56\x41"); // 4
+			qz.append("\x1B\x40"); // 5
 			
 			// Tell the apple to print.
 			qz.print();
