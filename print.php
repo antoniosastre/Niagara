@@ -4,22 +4,17 @@
 <script type="text/javascript" src="js/html2canvas.js"></script>
 <script type="text/javascript" src="js/jquery.plugin.html2canvas.js"></script>
 
+<script>
+function setPrinter(name){
 
-
-<?php 
-
-function setPrinter($name){
-
-	echo "<button onClick=findPrinter(\"".$name."\")>Find</button>";
+	findPrinter(name);
 
 }
 
 
-function printText($text){
-
-	echo "<button onClick=printESCP()>Find</button>";
+function print(text){
+	printESCP(text, 3);
 
 }
 
-
-?>
+</script>
