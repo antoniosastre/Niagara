@@ -99,7 +99,7 @@
 		}
 		
 		// Alert success message
-		alert('Successfully sent print data to "' + qz.getPrinter() + '" queue.');
+		//alert('Successfully sent print data to "' + qz.getPrinter() + '" queue.');
 	}
 	
 	
@@ -142,124 +142,45 @@
 	*    qz.append('\n\n\nHello world!\n');
 	*    qz.print();
 	***************************************************************************/
-	function printESCP(text, rep) {
+	function apendarimp(text) {
 		if (notReady()) { return; }
 		
-		// Append a png in ESCP format with single pixel density
-		//qz.appendImage(getPath() + "img/image_sample_bw.png", "ESCP", "single");
-				
-		// Automatically gets called when "qz.appendImage()" is finished.
-		//window["qzDoneAppending"] = function() {
-			// Append the rest of our commands
-          
-			/*
-            qz.append('\nSara y Antonio\n 31/12/2009\n');
-			qz.append('\n***********************************************-\n');
-            qz.append("\x1B\x40"); // 1
-			qz.append("\x1B\x21\x77"); // 2
-			qz.append(" International \r\n");
-			qz.append(" Company \r\n");
-			qz.append("\x1B\x21\x01"); // 3
-			qz.append(" ************************************************** \r\n");
-			qz.append("Info: 42972\r\n");
-			qz.append("Info: Kommm\r\n");
-			qz.append("Datum: 14:00 01/02\r\n");
-			qz.append(" -------------------------------------------------- \r\n");
-			qz.append("Info: 42972\r\n");
-			qz.append("Info: Kommm\r\n");
-			qz.append("Datum: 14:00 01/02\r\n");
-			qz.append(" -------------------------------------------------- \r\n");
+			//cabeceraImp();
+			qz.setEncoding("ISO8859-15");
+		qz.append("\x1B\x40");
+		qz.appendHex("x1Bx74x28");
+
+
+			qz.append(text);
+
+			//pieImp();
 			qz.append(" \r\n");
-			qz.append(" \r\n");
-			qz.append(" \r\n");
-			qz.append(" \r\n");
-			qz.append("\x1D\x56\x41"); // 4
-			qz.append("\x1B\x40"); // 5
-			
-		*/
-			qz.setEncoding("ISO8859-15")
-			qz.append("\x1B\x40");
-			qz.appendHex("x1Bx74x28");
-			//qz.appendHex("x1Bx52x00");
-			//qz.append("\x1B\x25\x31");
-			for (var i = 33; i <= 127; i++) {
-				qz.append(chr(i));
-				qz.append(" ");
-			};
+		qz.append(" \r\n");
+		qz.append("\x1D\x56\x41");
+		qz.append("\x1B\x40"); 
 
-			qz.append(" \r\n");
-			qz.append(" \r\n");
-
-			for (var i = 128; i <= 255; i++) {
-				qz.append(chr(i));
-				qz.append(" ");
-			};
-
-
-			//qz.append("\xB5\x23\x90\x23\xD6\x23\xE0\x23\xE9\x23\xA0\x23\x82\x23\xA1\x23\xA2\x23\xA3\x23\xA5\x23\xA4");
-			
-			qz.append(" \r\n");
-			qz.append(" \r\n");
-			qz.append("ÁÉÍÓÚ-áéíóú-Ññ");
-			qz.append(" \r\n");
-			qz.append(" \r\n");
-
-
-
-
-  qz.setEncoding("IBM869");
-
-    // Select character code table CP869, Table 38 on Epson TM88V (x26)
-    // Format: <ESC> <GS> t <value>
-    qz.appendHex("x1Bx74x26");
-
-    // Left align
-    qz.appendHex("x1Bx61x00");
-
-    qz.append("Greek typed directly into text editor:\r\n");
-    // Append greek text
-    qz.append("   Πληροφορίες\r\n\r\n");
-
-    qz.append("Greek encoded (ANSI safe):\r\n");
-    // Append ansi-safe greek text, converted to unicode
-    qz.append("   \u03A0\u03BB\u03B7\u03C1\u03BF\u03C6\u03BF\u03C1\u03AF\u03B5\u03C2\r\n\r\n");
-
-    qz.append("Greek typed directly into text editor:\r\n");
-    // Append greek text
-    qz.append("  Το στίγμα ενδέχεται να μην είναι ακριβές\r\n\r\n");
-
-    qz.append("Greek encoded (ANSI safe):\r\n");
-    // Append ansi-safe greek text, converted to unicode
-    qz.append("  \u03A4\u03BF \u03C3\u03C4\u03AF\u03B3\u03BC\u03B1 \u03B5");
-    qz.append("\u03BD\u03B4\u03AD\u03C7\u03B5\u03C4\u03B1\u03B9 \u03BD");
-    qz.append("\u03B1 \u03BC\u03B7\u03BD \u03B5\u03AF\u03BD\u03B1\u03B9 ");
-    qz.append("\u03B1\u03BA\u03C1\u03B9\u03B2\u03AD\u03C2\r\n\r\n");
-    // Feed 2 lines
-    qz.append("\r\n\r\n");
-
-    // Center Align
-    qz.appendHex("x1Bx61x01");
-
-    // Append a black and white image
-
-    // Wait for image to finish append
-
-
-
-
-
-			qz.append("\x1D\x56\x41"); // 4
-			qz.append("\x1B\x40"); // 5
-			// Tell the apple to print.
 			qz.print();
 			
 			// Remove any reference to this function
 			window['qzDoneAppending'] = null;
-		//};
 	}
-	
-	
 
+
+	function cabeceraImp(){
+		qz.setEncoding("ISO8859-15");
+		qz.append("\x1B\x40");
+		qz.appendHex("x1Bx74x28");
+
+	}
+
+	function pieImp(){
+
+		qz.append(" \r\n");
+		qz.append(" \r\n");
+		qz.append("\x1D\x56\x41");
+		qz.append("\x1B\x40"); 
+
+	}
 	
 	/***************************************************************************
 	* Prototype function for printing a text or binary file containing raw 

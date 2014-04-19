@@ -60,9 +60,11 @@ echo "Pre: ".$nota['precio']."<br />";
 
   		$resultado = trabajosImp($nota['id']);
 	 	while($trabajoImp = mysqli_fetch_array($resultado)){
- 			echo "<div id=\"tdn-".$nota['id']."-".$count."\">";
+ 			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
  			echo $trabajoImp['notas'];
- 			echo "</div>";
+ 			$queseimprimir = str_replace(" ", "\x31", $trabajoImp['notas']);
+ 			echo "\n<br><br><button onClick=imprimir(\"".$queseimprimir."\")>Imprimir</button>";
+ 			echo "\n</div>";
  			$count++;
  		}
 
@@ -70,9 +72,11 @@ echo "Pre: ".$nota['precio']."<br />";
 
   		$resultado = trabajosCd($nota['id']);
 	 	while($trabajoCd = mysqli_fetch_array($resultado)){
- 			echo "<div id=\"tdn-".$nota['id']."-".$count."\">";
+ 			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
  			echo $trabajoCd['notas'];
- 			echo "</div>";
+ 			$queseimprimir = str_replace(" ", "\x31", $trabajoCd['notas']);
+ 			echo "\n<br><br><button onClick=imprimir(\"".$queseimprimir."\")>Imprimir</button>";
+ 			echo "\n</div>";
  			$count++;
 
   }

@@ -1,3 +1,5 @@
+<button onClick=setPrinter("raw") >Set</button>
+<?php include 'db.php' ?>
 <div id="tabs">
 	<ul>
 		<li><a href="#tabs-1">Notas</a></li>

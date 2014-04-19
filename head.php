@@ -2,7 +2,7 @@
 <script src="js/jquery-2.1.0.min.js"></script>
 <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<?php include 'db.php' ?>
+<?php include "print.html" ?>
 
 <script>
 	$(function() {
