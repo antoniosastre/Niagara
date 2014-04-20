@@ -143,6 +143,18 @@
 	*    qz.print();
 	***************************************************************************/
 	function apendarimp(text) {
+
+		while( text.indexOf("\\n") > -1)
+      {
+        text = text.replace("\\n", "\n");
+      }
+
+      while( text.indexOf("\\s") > -1)
+      {
+        text = text.replace("\\s", " ");
+      }
+
+
 		if (notReady()) { return; }
 		
 			//cabeceraImp();
@@ -150,6 +162,17 @@
 		qz.append("\x1B\x40");
 		qz.appendHex("x1Bx74x28");
 
+
+		while( text.indexOf(chr(31)) > -1)
+      {
+
+      	var nulo = text.indexOf(chr(31));
+
+      	qz.append(text.substring(0,nulo));
+      	qz.appendHex("x00");
+      	text = text.substring(nulo+1);
+       
+      }
 
 			qz.append(text);
 
@@ -181,7 +204,7 @@
 		qz.append("\x1B\x40"); 
 
 	}
-	
+
 	/***************************************************************************
 	* Prototype function for printing a text or binary file containing raw 
 	* print commands.

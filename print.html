@@ -20,9 +20,14 @@ function imprimir(text){
 }
 
 function cleanString (str) {
-		while( str.indexOf("\x31") > -1)
+	while( str.indexOf("\n") > -1)
       {
-        str = str.replace("\x31", " ");
+        str = str.replace("\n", "\\n");
+      }
+
+      while( str.indexOf(" ") > -1)
+      {
+        str = str.replace(" ", "\\s");
       }
 
 		return str;

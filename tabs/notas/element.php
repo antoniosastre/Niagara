@@ -37,6 +37,8 @@ echo "Pre: ".$nota['precio']."<br />";
 <div class="trabajos-de-nota">
 
 	<?php 
+	include_once "trabview.php";
+	include_once "tickets.php";
 	$count = 1;
 
 	echo "<ul>";	
@@ -60,10 +62,10 @@ echo "Pre: ".$nota['precio']."<br />";
 
   		$resultado = trabajosImp($nota['id']);
 	 	while($trabajoImp = mysqli_fetch_array($resultado)){
+
  			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
- 			echo $trabajoImp['notas'];
- 			$queseimprimir = str_replace(" ", "\x31", $trabajoImp['notas']);
- 			echo "\n<br><br><button onClick=imprimir(\"".$queseimprimir."\")>Imprimir</button>";
+ 			echo viewTrabImp();
+ 			echo "\n<br><br><button onClick=imprimir(\"".ticketTrabImprenta()."\")>Imprimir</button>";
  			echo "\n</div>";
  			$count++;
  		}
@@ -72,10 +74,10 @@ echo "Pre: ".$nota['precio']."<br />";
 
   		$resultado = trabajosCd($nota['id']);
 	 	while($trabajoCd = mysqli_fetch_array($resultado)){
+
  			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
- 			echo $trabajoCd['notas'];
- 			$queseimprimir = str_replace(" ", "\x31", $trabajoCd['notas']);
- 			echo "\n<br><br><button onClick=imprimir(\"".$queseimprimir."\")>Imprimir</button>";
+ 			echo viewTrabCd();
+ 			echo "\n<br><br><button onClick=imprimir(\"".ticketTrabCd()."\")>Imprimir</button>";
  			echo "\n</div>";
  			$count++;
 
