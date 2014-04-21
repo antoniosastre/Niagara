@@ -19,7 +19,7 @@
 		<td colspan="6" style="text-align:center; font-size:90%"><?php echo utf8_encode($nota['cliente']) ?></td>
 	</tr>
 	<tr height="*">
-		<td colspan="6" style="font-size:62%" valign="top">
+		<td colspan="6" style="font-size:62%; vertical-align:top;">
 
 			<div class="notas-de-nota">
 				<ul>
