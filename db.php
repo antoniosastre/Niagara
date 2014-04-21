@@ -36,6 +36,21 @@ function trabajosCd($id){
 	return $res;
 }
 
+function trabajosAnapurna($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_anapurna WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function prioColor($id){
+	global $conexion;
+	$que = "SELECT color FROM prio_color WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['color'];
+
+}
 /*
 
 function todosclientes(){
@@ -257,16 +272,35 @@ function idultimocliente(){
 	$linea = mysqli_fetch_array($res);
 	return $linea['id'];
 }
-
+*/
 function fechanormal($fecha){
-	ereg( "([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})", $fecha, $mifecha); 
+	preg_match( "#([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})#", $fecha, $mifecha); 
 	$lafecha=$mifecha[3]."/".$mifecha[2]."/".$mifecha[1];
 	return $lafecha;
 }
 
 function fechasql($fecha){
-	ereg( "([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})", $fecha, $mifecha);
+	preg_match( "#([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})#", $fecha, $mifecha);
 	$lafecha=$mifecha[3]."-".$mifecha[2]."-".$mifecha[1];
 	return $lafecha; }
-*/
+
 ?>
+
+<script>
+
+	function saveComentGeneral(nota, texto){
+
+		alert("Nota: "+nota+"\nTexto: "+texto);
+
+	}
+
+</script>
+
+
+
+
+
+
+
+
+

@@ -29,6 +29,16 @@
 				$("#dia-nuevanota").dialog("open");
 			});
 
+
+			$("#notacontainer").sortable({
+				connectWith: ".elemento-nota",
+				items: ".elemento-nota",
+				opacity: 0.5,
+				coneHelperSize: true,
+				forcePlaceholderSize: true,
+				tolerance: "pointer"
+});
+
 		});
 </script>
 
@@ -156,6 +166,27 @@
 	#tabla-menu-notas {
 		font: 100% "Trebuchet MS", sans-serif;
 	}
+
+	.notas-de-nota {
+		margin-top: 3px;
+		margin-bottom: 0px;
+
+	}
+
+	.trabajos-de-nota {
+		margin-top: 6px;
+		margin-bottom: 3px;
+
+	}
+
+	.elemento-nota {
+		padding: 8px;
+		border-style:solid;
+		border-width:1px;
+
+	}
+
+
 	</style>
 
 <!--		

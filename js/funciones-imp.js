@@ -155,11 +155,7 @@
 
 		if (notReady()) { return; }
 		
-			//cabeceraImp();
-			qz.setEncoding("ISO8859-15");
-		qz.append("\x1B\x40");
-		qz.appendHex("x1Bx74x28");
-
+			cabeceraImp();
 
 		while( text.indexOf(chr(31)) > -1)
       {
@@ -174,11 +170,7 @@
 
 			qz.append(text);
 
-			//pieImp();
-			qz.append(" \r\n");
-		qz.append(" \r\n");
-		qz.append("\x1D\x56\x41");
-		qz.append("\x1B\x40"); 
+			pieImp();
 
 			qz.print();
 			
@@ -191,6 +183,7 @@
 		qz.setEncoding("ISO8859-15");
 		qz.append("\x1B\x40");
 		qz.appendHex("x1Bx74x28");
+		qz.appendHex("x1Dx62x31");
 
 	}
 
