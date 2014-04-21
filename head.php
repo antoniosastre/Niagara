@@ -12,6 +12,7 @@
 			$( ".trabajos-de-nota" ).tabs();
 			$( "#notascrearnota" ).tabs();
 			$( "#selectornotas" ).buttonset();
+			$( ".anadir-trabajo" ).buttonset();
 			$( ".elemento-nota").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
 
 			$("#dia-nuevanota").dialog({
@@ -38,6 +39,14 @@
 				forcePlaceholderSize: true,
 				tolerance: "pointer"
 });
+
+			$( "#crear_fecha_in" ).datepicker({
+			inline: true
+		});
+
+			$( "#crear_fecha_out" ).datepicker({
+			inline: true
+		});
 
 		});
 </script>
@@ -183,6 +192,7 @@
 		padding: 8px;
 		border-style:solid;
 		border-width:1px;
+		box-shadow: 5px 10px 10px #bbb;
 
 	}
 
