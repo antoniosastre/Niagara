@@ -1,4 +1,3 @@
-<button onClick=setPrinter("raw") >Set</button>
 <?php include 'db.php' ?>
 <div id="tabs">
 	<ul>

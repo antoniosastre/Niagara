@@ -23,6 +23,7 @@
 			parameters['jnlp_href'] = 'jre6/qz-print_jnlp.jnlp';
 		}
 		deployJava.runApplet(attributes, parameters, '1.5');
+		findPrinter("raw");
 	}
 	
 	/**
@@ -36,6 +37,7 @@
 			try {
 				title.innerHTML = title.innerHTML + " " + qz.getVersion();
 				document.getElementById("content").style.background = "#F0F0F0";
+
 			} catch(err) { // LiveConnect error, display a detailed meesage
 				document.getElementById("content").style.background = "#F5A9A9";
 				alert("ERROR:  \nThe applet did not load correctly.  Communication to the " + 
@@ -61,6 +63,7 @@
 		// If a printer hasn't been selected, display a message.
 		else if (!qz.getPrinter()) {
 			alert('Please select a printer first by using the "Detect Printer" button.');
+				  findPrinter("raw");
 			return true;
 		}
 		return false;
@@ -144,14 +147,9 @@
 	***************************************************************************/
 	function apendarimp(text) {
 
-		while( text.indexOf("\\n") > -1)
+	while( text.indexOf("\\n") > -1)
       {
         text = text.replace("\\n", "\n");
-      }
-
-      while( text.indexOf("\\s") > -1)
-      {
-        text = text.replace("\\s", " ");
       }
 
 

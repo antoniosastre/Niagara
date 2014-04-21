@@ -39,35 +39,43 @@ echo "Pre: ".$nota['precio']."<br />";
 	<?php 
 	include_once "trabview.php";
 	include_once "tickets.php";
-	$count = 1;
+	$count = 0;
 
 	echo "<ul>";	
 
 	//Trabajos de Imprenta.
 	$resultado = trabajosImp($nota['id']);
 	 	while($trabajoImp = mysqli_fetch_array($resultado)){
- 			echo "<li><a href=\"#tdn-".$nota['id']."-".$count."\">".$count." - Imp.</a></li>";
+ 			echo "<li><a href=\"#tdn-".$numnota."-".$count."\">".$count." - Imp.</a></li>";
  			$count++;
  			}
  	//Trabajos de CD/DVD.
  		$resultado = trabajosCd($nota['id']);
 	 	while($trabajoCd = mysqli_fetch_array($resultado)){
- 			echo "<li><a href=\"#tdn-".$nota['id']."-".$count."\">".$count." - CD</a></li>";	
+ 			echo "<li><a href=\"#tdn-".$numnota."-".$count."\">".$count." - CD</a></li>";	
  			$count++;
  		}
 
+
+ 	echo "<script>tickets[1][".$numnota."] = new Array(".($count).");</script>";
+ 	echo "<script>tickets[0][".$numnota."] = ".$nota['id'].";</script>";
+
   	echo "</ul>";
-  	$count = 1;
+  	$count = 0;
   	//Trabajos de Imprenta.
 
   		$resultado = trabajosImp($nota['id']);
 	 	while($trabajoImp = mysqli_fetch_array($resultado)){
 
- 			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
+	 		//echo "<script>var </script>";
+
+ 			echo "\n<div id=\"tdn-".$numnota."-".$count."\">";
  			echo viewTrabImp();
- 			echo "\n<br><br><button onClick=imprimir(\"".ticketTrabImprenta()."\")>Imprimir</button>";
+ 			echo "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabImprenta()."\";</script>";
+ 			echo "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Imprimir</button>";
  			echo "\n</div>";
  			$count++;
+
  		}
 
  	//Trabajos de CD/DVD.
@@ -75,9 +83,10 @@ echo "Pre: ".$nota['precio']."<br />";
   		$resultado = trabajosCd($nota['id']);
 	 	while($trabajoCd = mysqli_fetch_array($resultado)){
 
- 			echo "\n<div id=\"tdn-".$nota['id']."-".$count."\">";
+ 			echo "\n<div id=\"tdn-".$numnota."-".$count."\">";
  			echo viewTrabCd();
- 			echo "\n<br><br><button onClick=imprimir(\"".ticketTrabCd()."\")>Imprimir</button>";
+ 			echo "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabCd()."\";</script>";
+ 			echo "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Imprimir</button>";
  			echo "\n</div>";
  			$count++;
 

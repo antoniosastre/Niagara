@@ -7,15 +7,17 @@
 <script>
 
 
-function setPrinter(name){
+function setPrinter(name) {
 
 	findPrinter(name);
 
 }
 
 
-function imprimir(text){
-	apendarimp(cleanString(text));
+function imprimir(p1, p2) {
+
+
+	apendarimp(tickets[1][p1][p2]);
 
 }
 
@@ -23,11 +25,6 @@ function cleanString (str) {
 	while( str.indexOf("\n") > -1)
       {
         str = str.replace("\n", "\\n");
-      }
-
-      while( str.indexOf(" ") > -1)
-      {
-        str = str.replace(" ", "\\s");
       }
 
 		return str;
