@@ -1,3 +1,4 @@
+
 <div class="elemento-nota" style="background:<?php echo prioColor($nota['prioridad']); ?>;">
 
 <table width="100%" height="100%" border="0">
@@ -156,7 +157,7 @@
 				echo $contenidoCrearNota;
 			}else{
 
-				echo "<br><br><div style=\"text-align:center; font-size:200%;\"><button>Añadir Trabajo</button></div>";
+				echo "<br><br><div style=\"text-align:center; font-size:200%;\"><button class=\"crear-trabajo-nota\" onClick=\"notaalanadir(".$nota['id'].");\">Añadir Trabajo</button></div>";
 			}
 				  
 				?>
@@ -169,7 +170,7 @@
 		<td colspan="4" style="text-align:left; font-size:62%;">
 			<?php
 			if ($count!=0) {
-				echo "<button>Añadir Trabajo</button>";
+				echo "<button class=\"crear-trabajo-nota\" onClick=\"notaalanadir(".$nota['id'].")\">Añadir Trabajo</button>";
 			}
 			?>
 

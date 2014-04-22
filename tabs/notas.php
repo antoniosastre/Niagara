@@ -1,8 +1,11 @@
+
 <table id="tabla-menu-notas">
 	<tr>
 		<td>
 <button id="abrir-nuevanota">Nueva</button>
 <?php include 'tabs/crearnota.php' ?>
+<?php include 'tabs/creartrabajo.php' ?>
+
 		</td>
 		<td>
 <div id="selectornotas">

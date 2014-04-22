@@ -26,8 +26,26 @@
 				position: "top+10",
 				width: 800
 			});
+
+			$("#dia-nuevotrabajo").dialog({
+				autoOpen: false,
+				modal: true,
+				buttons: [
+					{text: "Cancelar", click: function() { $(this).dialog("close");}},
+					{text: "Guardar", click: function() { $(this).dialog("close");}}
+					],
+				hide: true,
+				position: "top+10",
+				width: 800
+			});
+
+
 			$("#abrir-nuevanota").button().click(function () {
 				$("#dia-nuevanota").dialog("open");
+			});
+
+			$(".crear-trabajo-nota").button().click(function () {
+				$("#dia-nuevotrabajo").dialog("open");
 			});
 
 
