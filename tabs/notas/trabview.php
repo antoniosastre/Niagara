@@ -3,7 +3,7 @@ function viewTrabImp(){
 
 	global $trabajoImp;
 
-	$texto = utf8_encode($trabajoImp['coment']);
+	$texto = $trabajoImp['coment'];
 
 	return $texto;
 
@@ -15,7 +15,7 @@ function viewTrabCd(){
 
 	global $trabajoCd;
 
-	$texto = utf8_encode($trabajoCd['coment']);
+	$texto = $trabajoCd['coment'];
 
 	return $texto;
 
@@ -25,7 +25,7 @@ function viewTrabAnapurna(){
 
 	global $trabajoAnapurna;
 
-	$texto = utf8_encode($trabajoAnapurna['coment']);
+	$texto = $trabajoAnapurna['coment'];
 
 	return $texto;
 

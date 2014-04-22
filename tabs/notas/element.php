@@ -9,14 +9,14 @@
 		<td colspan="2" width="40%" style="text-align:right; font-size:75%">Prio: <?php echo $nota['prioridad'] ?></td>
 	</tr>
 	<tr height="15%">
-		<td colspan="6" style="text-align:center; font-size:110%"><?php echo utf8_encode($nota['trabajo']) ?></td>
+		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $nota['trabajo'] ?></td>
 	</tr>
 	<tr height="4%">
 		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($nota['fecha_in']) ?></td></tr></table></td>
 		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">Out:</td><td style="text-align:center;"><?php echo fechanormal($nota['fecha_out']) ?></td></tr></table></td>
 	</tr>
 	<tr height="10%">
-		<td colspan="6" style="text-align:center; font-size:90%"><?php echo utf8_encode($nota['cliente']) ?></td>
+		<td colspan="6" style="text-align:center; font-size:90%"><?php echo $nota['cliente'] ?></td>
 	</tr>
 	<tr height="*">
 		<td colspan="6" style="font-size:62%; vertical-align:top;">

@@ -13,6 +13,12 @@ if (mysqli_connect_errno($conexion))
   echo "OK";
   }
 
+  if (!$conexion->set_charset("utf8")) {
+    printf(" Error cargando el conjunto de caracteres utf8: %s\n", $conexion->error);
+} else {
+    printf(" - %s\n", $conexion->character_set_name());
+}
+
  echo "</div>";
 
 function todasnotas(){

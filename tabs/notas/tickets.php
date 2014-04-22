@@ -7,7 +7,7 @@ function ticketTrabImprenta() {
 
 	$texto = "";
 
-	$texto = "Cliente: " . utf8_encode($nota['cliente']) . "\n";
+	$texto = "Cliente: " . $nota['cliente'] . "\n";
 
 	$texto = $texto . chr(27) . chr(69) . "\x01";	//Negrita
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2
@@ -26,7 +26,7 @@ function ticketTrabImprenta() {
 	$texto = $texto . chr(27) . chr(69) . "\x02";	//Sin negrita
 	$texto = $texto . chr(29) . chr(33) . chr(31);	//Tamaño x1x1
 
-	$texto = $texto . utf8_encode($trabajoImp['coment']);
+	$texto = $texto . $trabajoImp['coment'];
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
@@ -44,7 +44,7 @@ function ticketTrabCd() {
 
 	$texto = "";
 
-		$texto = "Cliente: " . utf8_encode($nota['cliente']) . "\n";
+		$texto = "Cliente: " . $nota['cliente'] . "\n";
 
 	$texto = $texto . chr(27) . chr(69) . "\x01";	//Negrita
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2
@@ -63,7 +63,7 @@ function ticketTrabCd() {
 	$texto = $texto . chr(27) . chr(69) . "\x02";	//Sin negrita
 	$texto = $texto . chr(29) . chr(33) . chr(31);	//Tamaño x1x1
 
-	$texto = $texto . utf8_encode($trabajoCd['coment']);
+	$texto = $texto . $trabajoCd['coment'];
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
@@ -85,7 +85,7 @@ function ticketTrabAnapurna() {
 
 	$texto = "";
 
-		$texto = "Cliente: " . utf8_encode($nota['cliente']) . "\n";
+		$texto = "Cliente: " . $nota['cliente'] . "\n";
 
 	$texto = $texto . chr(27) . chr(69) . "\x01";	//Negrita
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2
@@ -104,7 +104,7 @@ function ticketTrabAnapurna() {
 	$texto = $texto . chr(27) . chr(69) . "\x02";	//Sin negrita
 	$texto = $texto . chr(29) . chr(33) . chr(31);	//Tamaño x1x1
 
-	$texto = $texto . utf8_encode($trabajoAnapurna['coment']);
+	$texto = $texto . $trabajoAnapurna['coment'];
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
