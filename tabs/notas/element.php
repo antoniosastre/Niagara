@@ -2,11 +2,11 @@
 
 <table width="100%" height="100%" border="0">
 	<tr height="4%">
-		<td colspan="2" style="text-align:left; font-size:75%">ID: <?php echo $nota['id'] ?></td>
-		<td colspan="2" style="text-align:center; font-size:60%">
+		<td colspan="2" width="40%" style="text-align:left; font-size:75%">ID: <?php echo $nota['id'] ?></td>
+		<td colspan="2" width="20%" style="text-align:center; font-size:60%">
 			<button>Editar</button>
 		</td>
-		<td colspan="2" style="text-align:right; font-size:75%">Prio: <?php echo $nota['prioridad'] ?></td>
+		<td colspan="2" width="40%" style="text-align:right; font-size:75%">Prio: <?php echo $nota['prioridad'] ?></td>
 	</tr>
 	<tr height="15%">
 		<td colspan="6" style="text-align:center; font-size:110%"><?php echo utf8_encode($nota['trabajo']) ?></td>
