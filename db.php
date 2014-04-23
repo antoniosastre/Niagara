@@ -51,7 +51,7 @@ function trabajosAnapurna($id){
 
 function prioColor($id){
 	global $conexion;
-	$que = "SELECT color FROM prio_color WHERE id='".$id."'";
+	$que = "SELECT color FROM hthelp_prio_color WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['color'];
