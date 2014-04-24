@@ -39,7 +39,7 @@
 				width: 800
 			});
 
-
+			$("button").button();
 			$("#abrir-nuevanota").button().click(function () {
 				$("#dia-nuevanota").dialog("open");
 			});
