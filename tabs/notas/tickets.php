@@ -28,6 +28,20 @@ function ticketTrabImprenta() {
 
 	$texto = $texto . $trabajoImp['coment'];
 
+	$texto = $texto . "\n\n";
+
+	$texto = $texto . chr(27) . chr(97) . "\x01";	//Centrado
+
+	$texto = $texto . chr(29) . chr(104) . "\x50";
+
+	$texto = $texto . chr(29) . chr(119) . "\x02";
+
+	$texto = $texto . chr(29) . chr(72) . "\x02";
+
+	$texto = $texto . chr(29) . chr(107) . "\x04" . "HOLA DIEGO " . chr(31);
+
+
+
 	$noesc = array("\n");
 	$escaped   = array("\\n");
 
