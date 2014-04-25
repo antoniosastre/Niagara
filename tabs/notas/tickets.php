@@ -28,6 +28,8 @@ function ticketTrabImprenta() {
 
 	$texto = $texto . $trabajoImp['coment'];
 
+//Código de barras.
+
 	$texto = $texto . "\n\n";
 
 	$texto = $texto . chr(27) . chr(97) . "\x01";	//Centrado
@@ -38,9 +40,9 @@ function ticketTrabImprenta() {
 
 	$texto = $texto . chr(29) . chr(72) . "\x02";
 
-	$texto = $texto . chr(29) . chr(107) . "\x04" . "HOLA DIEGO " . chr(31);
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-1-" . $trabajoImp['id'] . chr(31);
 
-
+//Fin del código de barras.
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
@@ -78,6 +80,23 @@ function ticketTrabCd() {
 	$texto = $texto . chr(29) . chr(33) . chr(31);	//Tamaño x1x1
 
 	$texto = $texto . $trabajoCd['coment'];
+
+
+	//Código de barras.
+
+	$texto = $texto . "\n\n";
+
+	$texto = $texto . chr(27) . chr(97) . "\x01";	//Centrado
+
+	$texto = $texto . chr(29) . chr(104) . "\x50";
+
+	$texto = $texto . chr(29) . chr(119) . "\x02";
+
+	$texto = $texto . chr(29) . chr(72) . "\x02";
+
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-2-" . $trabajoCd['id'] . chr(31);
+
+//Fin del código de barras.
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
@@ -119,6 +138,22 @@ function ticketTrabAnapurna() {
 	$texto = $texto . chr(29) . chr(33) . chr(31);	//Tamaño x1x1
 
 	$texto = $texto . $trabajoAnapurna['coment'];
+
+	//Código de barras.
+
+	$texto = $texto . "\n\n";
+
+	$texto = $texto . chr(27) . chr(97) . "\x01";	//Centrado
+
+	$texto = $texto . chr(29) . chr(104) . "\x50";
+
+	$texto = $texto . chr(29) . chr(119) . "\x02";
+
+	$texto = $texto . chr(29) . chr(72) . "\x02";
+
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-3-" . $trabajoAnapurna['id'] . chr(31);
+
+//Fin del código de barras.
 
 	$noesc = array("\n");
 	$escaped   = array("\\n");
