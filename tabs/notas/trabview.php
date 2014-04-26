@@ -1,14 +1,4 @@
 <?php
-function viewTrabImp(){
-
-	global $trabajoImp;
-
-	$texto = $trabajoImp['coment'];
-
-	return $texto;
-
-
-}
 
 
 function viewTrabCd(){

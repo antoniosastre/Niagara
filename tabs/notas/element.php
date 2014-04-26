@@ -43,31 +43,38 @@
 
 					
 	
-					include_once "trabview.php";
-					include_once "tickets.php";
+					//include_once "trabview.php";
+					//include_once "tickets.php";
+
+					include_once "trabajos/anapurna.php";
+					include_once "trabajos/cddvd.php";
+					include_once "trabajos/colocacion.php";
+					include_once "trabajos/diseno.php";
+					include_once "trabajos/exterior.php";
+					include_once "trabajos/imprenta.php";
+					include_once "trabajos/otro.php";
+					include_once "trabajos/plotter.php";
+					include_once "trabajos/rotulacion.php";
+					include_once "trabajos/sublimacion.php";
+					include_once "trabajos/vcorte.php";
 					
 					$count = 0;
 					
 					$contenidoCrearNota = $contenidoCrearNota."<ul>";
 
-					//Trabajos de Imprenta.
-					$resultado = trabajosImp($nota['id']);
-					 	while($trabajoImp = mysqli_fetch_array($resultado)){
-				 			$contenidoCrearNota = $contenidoCrearNota. "<li><a href=\"#tdn-".$numnota."-".$count."\">".($count+1)." - Imp.</a></li>";
-				 			$count++;
-				 			}
-				 	//Trabajos de CD/DVD.
-				 		$resultado = trabajosCd($nota['id']);
-					 	while($trabajoCd = mysqli_fetch_array($resultado)){
-				 			$contenidoCrearNota = $contenidoCrearNota. "<li><a href=\"#tdn-".$numnota."-".$count."\">".($count+1)." - CD</a></li>";	
-				 			$count++;
-				 		}
-				 	//Trabajos Anapurna
-				 	$resultado = trabajosAnapurna($nota['id']);
-					 	while($trabajoAnapurna = mysqli_fetch_array($resultado)){
-				 			$contenidoCrearNota = $contenidoCrearNota. "<li><a href=\"#tdn-".$numnota."-".$count."\">".($count+1)." - Anap.</a></li>";	
-				 			$count++;
-				 		}
+		//---Cabeceras---
+
+				 	cabTrabAnapurna();
+					cabTrabCddvd();
+					cabTrabColocacion();
+					cabTrabDiseno();
+					cabTrabExterior();
+				 	cabTrabImprenta();
+				 	cabTrabOtro();
+					cabTrabPlotter();
+				 	cabTrabRotulacion();
+				 	cabTrabSublimacion();
+				 	cabTrabVcorte();
 
 				 	$contenidoCrearNota = $contenidoCrearNota."</ul>";
 
@@ -76,79 +83,29 @@
 
 				  	
 				  	$count = 0;
+
+
+		//---Pestañas---
 				  	//Trabajos de Imprenta.
 				  	
-				  		$resultado = trabajosImp($nota['id']);
-					 	while($trabajoImp = mysqli_fetch_array($resultado)){
+				  	tabTrabAnapurna();
+					tabTrabCddvd();
+					tabTrabColocacion();
+					tabTrabDiseno();
+					tabTrabExterior();
+				 	tabTrabImprenta();
+				 	tabTrabOtro();
+					tabTrabPlotter();
+				 	tabTrabRotulacion();
+				 	tabTrabSublimacion();
+				 	tabTrabVcorte();
 
-				 			$contenidoCrearNota = $contenidoCrearNota."\n<div id=\"tdn-".$numnota."-".$count."\">";
-				 			$contenidoCrearNota = $contenidoCrearNota. viewTrabImp();
-				 			$contenidoCrearNota = $contenidoCrearNota. "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabImprenta()."\";</script>";
-				 			$contenidoCrearNota = $contenidoCrearNota. "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Ticket</button>";
-				 			$contenidoCrearNota = $contenidoCrearNota. " <button>Editar</button>";	
-				 			$contenidoCrearNota = $contenidoCrearNota. "\n</div>";
-				 			$count++;
-
-				 		}
-
-				 	//Trabajos de CD/DVD.
-
-				  		$resultado = trabajosCd($nota['id']);
-					 	while($trabajoCd = mysqli_fetch_array($resultado)){
-
-				 			$contenidoCrearNota = $contenidoCrearNota. "\n<div id=\"tdn-".$numnota."-".$count."\">";
-				 			$contenidoCrearNota = $contenidoCrearNota. viewTrabCd();
-				 			$contenidoCrearNota = $contenidoCrearNota. "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabCd()."\";</script>";
-				 			$contenidoCrearNota = $contenidoCrearNota. "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Ticket</button>";
-				 			$contenidoCrearNota = $contenidoCrearNota. " <button>Editar</button>";	
-				 			$contenidoCrearNota = $contenidoCrearNota. "\n</div>";
-				 			$count++;
-
-				  }
-
-				  	//Trabajos de Anapurna
-					  $resultado = trabajosAnapurna($nota['id']);
-						 	while($trabajoAnapurna = mysqli_fetch_array($resultado)){
-
-					 			$contenidoCrearNota = $contenidoCrearNota. "\n<div id=\"tdn-".$numnota."-".$count."\">";
-					 			$contenidoCrearNota = $contenidoCrearNota. viewTrabAnapurna();
-					 			$contenidoCrearNota = $contenidoCrearNota. "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabAnapurna()."\";</script>";
-					 			$contenidoCrearNota = $contenidoCrearNota. "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Ticket</button>";
-				 				$contenidoCrearNota = $contenidoCrearNota. " <button>Editar</button>";				 			
-					 			$contenidoCrearNota = $contenidoCrearNota. "\n</div>";
-					 			$count++;
-
-					  }
+	
+				  	
 
 					  $contenidoCrearNota = $contenidoCrearNota. "</div>";
 
-					  //Crear trabajo
-					
-					 /*
-					echo "\n<div id=\"tdn-".$numnota."-crear\">";
-
-							echo "<div class=\"anadir-trabajo\"id=\"anadir-trabajo-".$numnota."\">";
-					echo "<input type=\"radio\" id=\"at-".$numnota."-1\" name=\"at\"><label for=\"at-".$numnota."-1\">Todas</label>";
-					echo "<input type=\"radio\" id=\"at-".$numnota."-2\" name=\"at\"><label for=\"at-".$numnota."-2\">Hoy</label>";
-					echo "<input type=\"radio\" id=\"at-".$numnota."-3\" name=\"at\"><label for=\"at-".$numnota."-3\">Mañana</label>";
-					echo "<input type=\"radio\" id=\"at-".$numnota."-4\" name=\"at\"><label for=\"at-".$numnota."-4\">Archivadas</label>";
-					echo "</div>";
-					echo "</div>";
-
-					
-					echo "<select>";
-					echo "<option value=\"sel\">Seleccionar...</option>";
-					echo "<option value=\"imprimir\">Diseño</option>";
- 					echo "<option value=\"imprimir\">Imprimir</option>";
-  					echo "<option value=\"anapurna\">Anapurna</option>";
-  					echo "<option value=\"mercedes\">CD/DVD</option>";
-  					echo "<option value=\"plotter\">Plotter</option>";
-  					echo "<option value=\"vcorte\">Vinilo de Corte</option>";
-  					echo "<option value=\"sublimacion\">Sublimación</option>";
-  					echo "<option value=\"externo\">Externo</option>";
-
-					echo "</select>";
-					*/
+					 
 
 			if ($count != 0) {
 				echo $contenidoCrearNota;

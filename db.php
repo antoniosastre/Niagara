@@ -28,26 +28,83 @@ function todasnotas(){
 	return $res;
 }
 
-function trabajosImp($id){
-	global $conexion;
-	$que = "SELECT * FROM trab_imp WHERE nota='".$id."' ORDER BY id";
-	$res = mysqli_query($conexion,$que);
-	return $res;
-}
-
-function trabajosCd($id){
-	global $conexion;
-	$que = "SELECT * FROM trab_cddvd WHERE nota='".$id."' ORDER BY id";
-	$res = mysqli_query($conexion,$que);
-	return $res;
-}
-
 function trabajosAnapurna($id){
 	global $conexion;
 	$que = "SELECT * FROM trab_anapurna WHERE nota='".$id."' ORDER BY id";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
+
+function trabajosCddvd($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_cddvd WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosColocacion($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_colocacion WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosDiseno($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_diseno WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosExterior($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_exterior WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosImprenta($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_imprenta WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosOtro($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_otro WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosPlotter($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_plotter WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosRotulacion($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_rotulacion WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosSublimacion($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_sublimacion WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function trabajosVcorte($id){
+	global $conexion;
+	$que = "SELECT * FROM trab_vcorte WHERE nota='".$id."' ORDER BY id";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
 
 function prioColor($id){
 	global $conexion;
