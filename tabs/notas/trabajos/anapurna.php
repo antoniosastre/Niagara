@@ -22,6 +22,7 @@ function tabTrabAnapurna(){
 	global $contenidoCrearNota;
 	global $numnota;
 	global $count;
+	global $trabajoAnapurna;
 
 
 	$resultado = trabajosAnapurna($nota['id']);
@@ -55,7 +56,7 @@ function ticketTrabAnapurna() {
 	$texto = $texto . "************************\n";
 	$texto = $texto . chr(29) . chr(33) . "\x55";	//Tamaño x6x6
 
-	$texto = $texto . "IMPRIMIR\n";
+	$texto = $texto . "ANAPURNA\n";
 
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2	
 

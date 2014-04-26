@@ -22,6 +22,7 @@ function tabTrabExterior(){
 	global $contenidoCrearNota;
 	global $numnota;
 	global $count;
+	global $trabajoExterior;
 
 
 	$resultado = trabajosExterior($nota['id']);
@@ -55,7 +56,7 @@ function ticketTrabExterior() {
 	$texto = $texto . "************************\n";
 	$texto = $texto . chr(29) . chr(33) . "\x55";	//Tamaño x6x6
 
-	$texto = $texto . "IMPRIMIR\n";
+	$texto = $texto . "EXTERNO\n";
 
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2	
 
@@ -80,7 +81,7 @@ function ticketTrabExterior() {
 
 	$texto = $texto . chr(29) . chr(72) . "\x02";
 
-	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-1-" . $trabajoExterior['id'] . chr(31);
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-5-" . $trabajoExterior['id'] . chr(31);
 
 //Fin del código de barras.
 

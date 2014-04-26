@@ -22,6 +22,7 @@ function tabTrabSublimacion(){
 	global $contenidoCrearNota;
 	global $numnota;
 	global $count;
+	global $trabajoSublimacion;
 
 
 	$resultado = trabajosSublimacion($nota['id']);
@@ -53,9 +54,9 @@ function ticketTrabSublimacion() {
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2
 		$texto = $texto . chr(27) . chr(97) . "\x01";	//Centrado
 	$texto = $texto . "************************\n";
-	$texto = $texto . chr(29) . chr(33) . "\x55";	//Tamaño x6x6
+	$texto = $texto . chr(29) . chr(33) . "\x33";	//Tamaño x6x6
 
-	$texto = $texto . "IMPRIMIR\n";
+	$texto = $texto . "SUBLIMACIÓN\n";
 
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2	
 
@@ -80,7 +81,7 @@ function ticketTrabSublimacion() {
 
 	$texto = $texto . chr(29) . chr(72) . "\x02";
 
-	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-1-" . $trabajoSublimacion['id'] . chr(31);
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-A-" . $trabajoSublimacion['id'] . chr(31);
 
 //Fin del código de barras.
 

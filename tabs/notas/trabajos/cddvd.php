@@ -22,6 +22,7 @@ function tabTrabCddvd(){
 	global $contenidoCrearNota;
 	global $numnota;
 	global $count;
+	global $trabajoCddvd;
 
 
 	$resultado = trabajosCddvd($nota['id']);
@@ -55,7 +56,7 @@ function ticketTrabCddvd() {
 	$texto = $texto . "************************\n";
 	$texto = $texto . chr(29) . chr(33) . "\x55";	//Tamaño x6x6
 
-	$texto = $texto . "IMPRIMIR\n";
+	$texto = $texto . "CD/DVD\n";
 
 	$texto = $texto . chr(29) . chr(33) . "\x11";	//Tamaño x2x2	
 
@@ -80,7 +81,7 @@ function ticketTrabCddvd() {
 
 	$texto = $texto . chr(29) . chr(72) . "\x02";
 
-	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-1-" . $trabajoCddvd['id'] . chr(31);
+	$texto = $texto . chr(29) . chr(107) . "\x04" . $nota['id'] . "-2-" . $trabajoCddvd['id'] . chr(31);
 
 //Fin del código de barras.
 
