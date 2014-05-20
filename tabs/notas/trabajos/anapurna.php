@@ -29,7 +29,9 @@ function tabTrabAnapurna(){
 					 	while($trabajoAnapurna = mysqli_fetch_array($resultado)){
 
 				 			$contenidoCrearNota = $contenidoCrearNota."\n<div id=\"tdn-".$numnota."-".$count."\">";
-				 			$contenidoCrearNota = $contenidoCrearNota. $trabajoAnapurna['nombre'];
+				 			$contenidoCrearNota = $contenidoCrearNota. "Nombre: <input type=\"text\" value=\"".$trabajoAnapurna['nombre']."\" size=\"50\" maxlength=\"79\"><br>";
+				 			$contenidoCrearNota = $contenidoCrearNota. "Material: <input type=\"text\" value=\"".$trabajoAnapurna['material']."\" size=\"50\" maxlength=\"49\"><br>";
+				 			$contenidoCrearNota = $contenidoCrearNota. "Tamaño: <input type=\"text\" value=\"".$trabajoAnapurna['tamano']."\" size=\"25\" maxlength=\"49\"> Cantidad: <input type=\"text\" value=\"".$trabajoAnapurna['cantidad']."\" size=\"6\" maxlength=\"6\"><br>";
 				 			$contenidoCrearNota = $contenidoCrearNota. "<script>tickets[1][".$numnota."][".$count."] = \"".ticketTrabAnapurna()."\";</script>";
 				 			$contenidoCrearNota = $contenidoCrearNota. "\n<br><br><button id=\"btdn-".$numnota."-".$count."\" onClick=\"imprimir(".$numnota.", ".$count.");\">Ticket</button>";
 				 			$contenidoCrearNota = $contenidoCrearNota. " <button>Editar</button>";	
