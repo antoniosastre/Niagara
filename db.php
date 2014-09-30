@@ -50,14 +50,14 @@ function typeNameById($id){
 
 function insertMaterial($name, $subtype, $description, $comment){
 	global $conexion;
-	$que = "INSERT INTO mt_material (name,subtype) VALUES (\"Hucha\",".$subtype.")";
+	$que = "INSERT INTO mt_material (name,subtype) VALUES (\"".$name."\",".$subtype.")";
 	mysqli_query($conexion,$que);
-	$mate = mysqli_insert_id();
+	$mate = $mysqli->insert_id;
 	
-	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",".$description.")";
+	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
 	mysqli_query($conexion,$que);
 
-	$que = "INSERT INTO mt_comment (material,description) VALUES (".$mate.",".$comment.")";
+	$que = "INSERT INTO mt_comment (material,description) VALUES (".$mate.",\"".$comment."\")";
 	mysqli_query($conexion,$que);
 
 }
@@ -394,16 +394,6 @@ function fechasql($fecha){
 	return $lafecha; }
 
 ?>
-
-<script>
-
-	function saveComentGeneral(nota, texto){
-
-		alert("Nota: "+nota+"\nTexto: "+texto);
-
-	}
-
-</script>
 
 
 

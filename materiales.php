@@ -1,26 +1,34 @@
-<div style="clear: both;"></div>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
 
 <div id="materialcreator">
 
 
 <?php
-if (isset($_POST['submit'])) {
 
-    insertMaterial($_POST['name'],$_POST['subtype'],$_POST['description'],$_POST['comment']);
-    echo "Droplet Successfully Added!";
+include 'db.php';
 
+if (isset($_POST["submit"])) {
+    insertMaterial($_POST['name'],$_POST['subtype'],$_POST['description'],$_POST['comment']); 
+    echo $_POST['name']."<br>".$_POST['subtype']."<br>".$_POST['description']."<br>".$_POST['comment'];
 }
 ?>
 
-<form action="tabs/createMaterial.php" method="post">
+<form action="materiales.php" method="post">
     Name: <br /><input type="text" name="name"><br /><br />
     Subtype: <br /><input type="text" name="subtype"><br /><br />
     Description: <br /><input type="text" name="description"><br /><br />
     Comment: <br /><input type="text" name="comment"><br /><br />
-    <input class="btn btn-info" type="submit" value="Añadir">
+    <input class="btn btn-info" type="submit" value="Añadir" name="submit">
 </form>
 
 
+
+Hola <?php echo htmlspecialchars($_POST['name']); ?>.
+Usted tiene <?php echo (int)$_POST['subtype']; ?> años.
 
 
 </div>
@@ -37,9 +45,9 @@ if (isset($_POST['submit'])) {
  </tr>
 <?php 
 
-	$resulta = allmaterials();
+  $resulta = allmaterials();
 
-	 while($material = mysqli_fetch_array($resulta)){
+   while($material = mysqli_fetch_array($resulta)){
  
  echo "<tr>
  <td>".$material['id']."</td>
@@ -49,10 +57,16 @@ if (isset($_POST['submit'])) {
  <td>".$material['description']."</td>
  <td>".$material['comment']."</td>
  </tr>";
-  			
-  		
+        
+      
   }
   
 ?>
 </table>
 </div>
+
+
+
+
+</body>
+</html>
