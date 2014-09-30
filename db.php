@@ -52,7 +52,11 @@ function insertMaterial($name, $subtype, $description, $comment){
 	global $conexion;
 	$que = "INSERT INTO mt_material (name,subtype) VALUES (\"".$name."\",".$subtype.")";
 	mysqli_query($conexion,$que);
-	$mate = $mysqli->insert_id;
+
+	$que = "SELECT LAST_INSERT_ID()";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	$mate = $linea['LAST_INSERT_ID()'];
 	
 	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
 	mysqli_query($conexion,$que);

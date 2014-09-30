@@ -12,24 +12,29 @@
 include 'db.php';
 
 if (isset($_POST["submit"])) {
-    insertMaterial($_POST['name'],$_POST['subtype'],$_POST['description'],$_POST['comment']); 
-    echo $_POST['name']."<br>".$_POST['subtype']."<br>".$_POST['description']."<br>".$_POST['comment'];
+    insertMaterial($_POST['name'],$_POST['subtype'],$_POST['description'],$_POST['comment']);
 }
 ?>
 
-<form action="materiales.php" method="post">
+<form action="materiales.php" method="post" id="newmaterial">
     Name: <br /><input type="text" name="name"><br /><br />
-    Subtype: <br /><input type="text" name="subtype"><br /><br />
+    Subtype: <br />
+
+<select name="subtype" form="newmaterial">
+  
+  
+
+
+
+</select>
+
+
+
+    <br /><br />
     Description: <br /><input type="text" name="description"><br /><br />
     Comment: <br /><input type="text" name="comment"><br /><br />
     <input class="btn btn-info" type="submit" value="Añadir" name="submit">
 </form>
-
-
-
-Hola <?php echo htmlspecialchars($_POST['name']); ?>.
-Usted tiene <?php echo (int)$_POST['subtype']; ?> años.
-
 
 </div>
 
