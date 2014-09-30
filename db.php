@@ -21,11 +21,12 @@ if (mysqli_connect_errno($conexion))
 
 function allmaterials(){
 	global $conexion;
-	$que = "SELECT mt_material.id, mt_material.name, mt_material.subtype, mt_subtype.type, mt_description.description, mt_comment.comment 
+	$que = "SELECT mt_material.id AS id, mt_material.name AS name, mt_subtype.name AS subtype, mt_description.description AS description, mt_comment.comment AS comment, mt_type.name AS type
 	FROM mt_material LEFT JOIN mt_subtype ON mt_material.subtype=mt_subtype.id 
 	LEFT JOIN mt_description ON mt_material.id=mt_description.material
 	LEFT JOIN mt_comment ON mt_material.id=mt_comment.material
-	ORDER BY subtype ASC";
+	LEFT JOIN mt_type ON mt_subtype.type=mt_type.id
+	ORDER BY type,subtype ASC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
@@ -61,12 +62,21 @@ function insertMaterial($name, $subtype, $description, $comment){
 	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
 	mysqli_query($conexion,$que);
 
-	$que = "INSERT INTO mt_comment (material,description) VALUES (".$mate.",\"".$comment."\")";
+	$que = "INSERT INTO mt_comment (material,comment) VALUES (".$mate.",\"".$comment."\")";
 	mysqli_query($conexion,$que);
 
 }
 
+function allSubtypesWithTypes(){
 
+	global $conexion;
+	$que = "SELECT mt_subtype.id AS id, mt_subtype.name AS subtype, mt_type.name AS type
+	FROM mt_subtype LEFT JOIN mt_type ON mt_subtype.type=mt_type.id 
+	ORDER BY type,subtype ASC";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+
+}
 
 
 

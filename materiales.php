@@ -21,7 +21,23 @@ if (isset($_POST["submit"])) {
     Subtype: <br />
 
 <select name="subtype" form="newmaterial">
-  
+  <?php
+
+  $res = allSubtypesWithTypes();
+
+    while ($linea = mysqli_fetch_array($res)){
+      
+
+      if ($actual != $linea['type']) {
+        $actual = $linea['type'];
+        echo "<option disabled> • ".$linea['type']."</option>";
+      }
+
+      echo "<option value=\"".$linea['id']."\">".$linea['subtype']."</option>";
+    }
+
+
+  ?>
   
 
 
@@ -57,8 +73,8 @@ if (isset($_POST["submit"])) {
  echo "<tr>
  <td>".$material['id']."</td>
  <td>".$material['name']."</td>
- <td>".typeNameById($material['type'])."</td>
- <td>".subtypeNameById($material['subtype'])."</td>
+ <td>".$material['type']."</td>
+ <td>".$material['subtype']."</td>
  <td>".$material['description']."</td>
  <td>".$material['comment']."</td>
  </tr>";
