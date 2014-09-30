@@ -2,7 +2,7 @@
 
 date_default_timezone_set('Europe/Madrid');
 
-$conexion = mysqli_connect("localhost", "root", "root", "notas");
+$conexion = mysqli_connect("151.236.36.41", "sastre_notas", "6vd0aN$1", "sastre_notas");
 
 echo "<div id=\"dbstatus\">DB: ";
 
@@ -10,16 +10,62 @@ if (mysqli_connect_errno($conexion))
   {
   echo "ERR." . mysqli_connect_error();
   }else{
-  echo "OK";
+  echo "<img src=\"/img/green.gif\" width=\"10\" height=\"10\">";
   }
 
   if (!$conexion->set_charset("utf8")) {
     printf(" Error cargando el conjunto de caracteres utf8: %s\n", $conexion->error);
-} else {
-    printf(" - %s\n", $conexion->character_set_name());
 }
 
  echo "</div>";
+
+function allmaterials(){
+	global $conexion;
+	$que = "SELECT mt_material.id, mt_material.name, mt_material.subtype, mt_subtype.type, mt_description.description, mt_comment.comment 
+	FROM mt_material LEFT JOIN mt_subtype ON mt_material.subtype=mt_subtype.id 
+	LEFT JOIN mt_description ON mt_material.id=mt_description.material
+	LEFT JOIN mt_comment ON mt_material.id=mt_comment.material
+	ORDER BY subtype ASC";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function subtypeNameById($id){
+	global $conexion;
+	$que = "SELECT name FROM mt_subtype WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+
+}
+
+function typeNameById($id){
+	global $conexion;
+	$que = "SELECT name FROM mt_type WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+
+}
+
+function insertMaterial($name, $subtype, $description, $comment){
+	global $conexion;
+	$que = "INSERT INTO mt_material (name,subtype) VALUES (\"Hucha\",".$subtype.")";
+	mysqli_query($conexion,$que);
+	$mate = mysqli_insert_id();
+	
+	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",".$description.")";
+	mysqli_query($conexion,$que);
+
+	$que = "INSERT INTO mt_comment (material,description) VALUES (".$mate.",".$comment.")";
+	mysqli_query($conexion,$que);
+
+}
+
+
+
+
+
 
 function todasnotas(){
 	global $conexion;
