@@ -50,21 +50,28 @@ function typeNameById($id){
 }
 
 function insertMaterial($name, $subtype, $description, $comment){
-	global $conexion;
-	$que = "INSERT INTO mt_material (name,subtype) VALUES (\"".$name."\",".$subtype.")";
-	mysqli_query($conexion,$que);
-
-	$que = "SELECT LAST_INSERT_ID()";
-	$res = mysqli_query($conexion,$que);
-	$linea = mysqli_fetch_array($res);
-	$mate = $linea['LAST_INSERT_ID()'];
 	
-	$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
-	mysqli_query($conexion,$que);
+	if(!empty($name)){
 
-	$que = "INSERT INTO mt_comment (material,comment) VALUES (".$mate.",\"".$comment."\")";
-	mysqli_query($conexion,$que);
+		global $conexion;
+		$que = "INSERT INTO mt_material (name,subtype) VALUES (\"".$name."\",".$subtype.")";
+		mysqli_query($conexion,$que);
 
+		$que = "SELECT LAST_INSERT_ID()";
+		$res = mysqli_query($conexion,$que);
+		$linea = mysqli_fetch_array($res);
+		$mate = $linea['LAST_INSERT_ID()'];
+
+		if(!empty($description)){
+			$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
+			mysqli_query($conexion,$que);
+		}
+		
+		if(!empty($comment)){
+			$que = "INSERT INTO mt_comment (material,comment) VALUES (".$mate.",\"".$comment."\")";
+			mysqli_query($conexion,$que);
+		}
+	}
 }
 
 function allSubtypesWithTypes(){
@@ -77,6 +84,51 @@ function allSubtypesWithTypes(){
 	return $res;
 
 }
+
+function allTypesWithSubtypes(){
+
+	global $conexion;
+	$que = "SELECT mt_subtype.id AS id, mt_subtype.name AS subtype, mt_type.name AS type
+	FROM mt_type LEFT JOIN mt_subtype ON mt_type.id=mt_subtype.type 
+	ORDER BY type,subtype ASC";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+
+}
+
+
+function insertType($name){
+	if(!empty($name)){
+
+		global $conexion;
+		$que = "INSERT INTO mt_type (name) VALUES (\"".$name."\")";
+		mysqli_query($conexion,$que);
+	}
+}
+
+
+function insertSubType($name, $type){
+
+if(!empty($name)){
+
+		global $conexion;
+		$que = "INSERT INTO mt_subtype (type,name) VALUES (".$type.",\"".$name."\")";
+		mysqli_query($conexion,$que);
+	}
+}
+
+function allTypes(){
+
+	global $conexion;
+	$que = "SELECT mt_type.id AS id, mt_type.name AS type
+	FROM mt_type
+	ORDER BY type ASC";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+
+}
+
+
 
 
 
