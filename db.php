@@ -26,7 +26,7 @@ function allmaterials(){
 	LEFT JOIN mt_description ON mt_material.id=mt_description.material
 	LEFT JOIN mt_comment ON mt_material.id=mt_comment.material
 	LEFT JOIN mt_type ON mt_subtype.type=mt_type.id
-	ORDER BY type,subtype ASC";
+	ORDER BY type,subtype,name ASC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
@@ -73,6 +73,18 @@ function insertMaterial($name, $subtype, $description, $comment){
 		}
 	}
 }
+
+function deleteMaterial($id){
+	
+	if(!empty($id)){
+
+		global $conexion;
+		$que = "DELETE FROM mt_material WHERE id=".$id;
+		mysqli_query($conexion,$que);
+
+	}
+}
+
 
 function allSubtypesWithTypes(){
 
@@ -128,6 +140,98 @@ function allTypes(){
 
 }
 
+function materialNameById($id){
+	global $conexion;
+	$que = "SELECT name FROM mt_material WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+}
+
+function materialDescriptionById($id){
+	global $conexion;
+	$que = "SELECT description FROM mt_description WHERE material='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['description'];
+}
+
+function materialCommentById($id){
+	global $conexion;
+	$que = "SELECT comment FROM mt_comment WHERE material='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['comment'];
+}
+
+function materialSubtypeIdById($id){
+	global $conexion;
+	$que = "SELECT subtype FROM mt_material WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['subtype'];
+}
+
+function updateMaterial($id,$name,$subtype,$description,$comment){
+
+	if(!empty($name)){
+
+		global $conexion;
+		$que = "UPDATE mt_material SET name=\"".$name."\",subtype=".$subtype." WHERE id='".$id."'";
+		mysqli_query($conexion,$que);
+
+	}
+
+
+		if(haveDescription($id)==1){
+			if(!empty($description)){
+				$que = "UPDATE mt_description SET description=\"".$description."\" WHERE material='".$id."'";
+				mysqli_query($conexion,$que);
+			}else{
+				$que = "DELETE FROM mt_description WHERE material='".$id."'";
+				mysqli_query($conexion,$que);
+			}
+		}else{
+			if(!empty($description)){
+				$que = "INSERT INTO mt_description (material,description) VALUES (".$id.",\"".$description."\")";
+				mysqli_query($conexion,$que);
+			}
+		}
+
+		
+		if(haveComment($id)==1){
+			if(!empty($dcomment)){
+				$que = "UPDATE mt_comment SET comment=\"".$comment."\" WHERE material='".$id."'";
+				mysqli_query($conexion,$que);
+			}else{
+				$que = "DELETE FROM mt_comment WHERE material='".$id."'";
+				mysqli_query($conexion,$que);
+			}
+		}else{
+			if(!empty($comment)){
+				$que = "INSERT INTO mt_comment (material,comment) VALUES (".$id.",\"".$comment."\")";
+				mysqli_query($conexion,$que);
+			}
+		}
+
+
+}
+
+function haveDescription($id){
+	global $conexion;
+	$que = "SELECT COUNT(*) AS numb FROM mt_description WHERE material='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['numb'];
+}
+
+function haveComment($id){
+	global $conexion;
+	$que = "SELECT COUNT(*) AS numb FROM mt_comment WHERE material='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['numb'];
+}
 
 
 
