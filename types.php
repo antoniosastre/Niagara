@@ -7,7 +7,7 @@
 
 <div id="wrapper">
     <div id="content">
-
+<?php include 'db.php'; ?>
 <div id="typescreator">
 
 
