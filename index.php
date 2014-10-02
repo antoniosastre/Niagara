@@ -3,6 +3,7 @@
 	<?php include 'head.php' ?>
 	</head>
 	<body>
-		<?php include 'body.php' ?>
+		<?php include 'topmenu.php'; ?>
+		<?php include 'tasks.php' ?>
 	</body>
 </html>

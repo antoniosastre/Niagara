@@ -1,15 +1,17 @@
 <html>
 <head>
-<meta charset="utf-8">
+<?php include 'head.php'; ?>
 </head>
 <body>
+<?php include 'topmenu.php'; ?>
+
+<div id="wrapper">
+    <div id="content">
 
 <div id="typescreator">
 
 
 <?php
-
-include 'db.php';
 
 if (isset($_POST["submit"]) && $_GET['new']=='type') {
     insertType($_POST['name']);
@@ -90,7 +92,8 @@ if (isset($_POST["submit"]) && $_GET['new']=='subtype') {
 </div>
 
 
-
+    </div>
+</div>
 
 </body>
 </html>
