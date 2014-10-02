@@ -233,13 +233,9 @@ function haveComment($id){
 	return $linea['numb'];
 }
 
-
-
-
-
-function todasnotas(){
+function allTasks(){
 	global $conexion;
-	$que = "SELECT * FROM notas ORDER BY prioridad DESC";
+	$que = "SELECT * FROM tsk_task ORDER BY priority DESC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
