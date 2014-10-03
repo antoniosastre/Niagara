@@ -129,10 +129,10 @@ echo  "\">";
 		<td colspan="5" width="54%" style="text-align:left; font-size:62%;">
 			<button>Edit.</button>
 			<?php
-			if ($count!=0) {
+			//if ($count!=0) {
 				//echo "<button>Imp. Trbjs.</button> ";
 				//echo "<button class=\"crear-trabajo-task\" onClick=\"taskalanadir(".$task['id'].")\">Añdr. Trbj.</button>";
-			}
+			//}
 			?>
 
 		</td>
