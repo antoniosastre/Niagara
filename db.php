@@ -233,12 +233,36 @@ function haveComment($id){
 	return $linea['numb'];
 }
 
-function allTasks(){
+function allJobs(){
 	global $conexion;
-	$que = "SELECT * FROM tsk_task ORDER BY priority DESC";
+	$que = "SELECT * FROM jb_jobs ORDER BY priority DESC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
+
+function fechanormal($fecha){
+	preg_match( "#([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})#", $fecha, $mifecha); 
+	$lafecha=$mifecha[3]."/".$mifecha[2]."/".$mifecha[1];
+	return $lafecha;
+}
+
+function fechasql($fecha){
+	preg_match( "#([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})#", $fecha, $mifecha);
+	$lafecha=$mifecha[3]."-".$mifecha[2]."-".$mifecha[1];
+	return $lafecha; }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function trabajosAnapurna($id){
 	global $conexion;
@@ -548,16 +572,6 @@ function idultimocliente(){
 	return $linea['id'];
 }
 */
-function fechanormal($fecha){
-	preg_match( "#([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})#", $fecha, $mifecha); 
-	$lafecha=$mifecha[3]."/".$mifecha[2]."/".$mifecha[1];
-	return $lafecha;
-}
-
-function fechasql($fecha){
-	preg_match( "#([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})#", $fecha, $mifecha);
-	$lafecha=$mifecha[3]."-".$mifecha[2]."-".$mifecha[1];
-	return $lafecha; }
 
 ?>
 

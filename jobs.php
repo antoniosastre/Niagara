@@ -5,11 +5,11 @@
 <script>
 	$(function() {
 
-			$( ".elemento-task").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
+			$( ".element-job").width(400).height(600).css({'float':'left', 'margin-top':'20px', 'margin-right':'20px'});
 
-			$("#notacontainer").sortable({
-				connectWith: ".elemento-task",
-				items: ".elemento-task",
+			$("#jobscontainer").sortable({
+				connectWith: ".element-job",
+				items: ".element-job",
 				opacity: 0.5,
 				coneHelperSize: true,
 				forcePlaceholderSize: true,
@@ -21,30 +21,30 @@
 </script>
 
 
-
 </head>
 <body>
+
 <?php include 'topmenu.php'; ?>
 
 <div id="wrapper">
     <div id="content">
 <?php include 'db.php'; ?>
 
-<button id="abrir-nuevanota">Nueva</button>
+<button id="open-new-job">Nueva</button>
 
-<div id="notacontainer">
+<div id="jobscontainer">
 
 <?php 
 
-	$resulta = allTasks();
+	$resulta = allJobs();
 
 	//echo "<script>var tickets = new Array(2);</script>";
 	//echo "<script>tickets[0] = new Array(".mysqli_num_rows($resulta).");</script>";
 	//echo "<script>tickets[1] = new Array(".mysqli_num_rows($resulta).");</script>";
-	$numnota = 0;
-	 while($task = mysqli_fetch_array($resulta)){
-  			include 'tasks/element.php';
-  			$numnota++;
+	$numjob = 0;
+	 while($job = mysqli_fetch_array($resulta)){
+  			include 'jobs/element.php';
+  			$numjob++;
   		
   }
   

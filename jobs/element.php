@@ -1,24 +1,24 @@
 <?php
-echo "<div class=\"elemento-task\" style=\"background:";
-echo prioColor($task['priority']);
+echo "<div class=\"element-job\" style=\"background:";
+echo prioColor($job['priority']);
 echo  "\">";
 ?>
 
 
 <table width="100%" height="100%" border="0">
 	<tr height="4%">
-		<td colspan="3" width="40%" style="text-align:left; font-size:75%">ID: <?php echo $task['id'] ?></td>
-		<td colspan="3" width="40%" style="text-align:right; font-size:75%">Prio: <?php echo $task['priority'] ?></td>
+		<td colspan="3" width="40%" style="text-align:left; font-size:75%">ID: <?php echo $job['id'] ?></td>
+		<td colspan="3" width="40%" style="text-align:right; font-size:75%">Prio: <?php echo $job['priority'] ?></td>
 	</tr>
 	<tr height="15%">
-		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $task['title'] ?></td>
+		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $job['title'] ?></td>
 	</tr>
 	<tr height="4%">
-		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($task['date_in']) ?></td></tr></table></td>
-		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">Out:</td><td style="text-align:center;"><?php echo fechanormal($task['date_out']) ?></td></tr></table></td>
+		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($job['date_in']) ?></td></tr></table></td>
+		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">Out:</td><td style="text-align:center;"><?php echo fechanormal($job['date_out']) ?></td></tr></table></td>
 	</tr>
 	<tr height="10%">
-		<td colspan="6" style="text-align:center; font-size:90%"><?php echo $task['client'] ?></td>
+		<td colspan="6" style="text-align:center; font-size:90%"><?php echo $job['client'] ?></td>
 	</tr>
 	<tr height="*">
 		<td colspan="6" style="font-size:62%; vertical-align:top;">
@@ -136,7 +136,7 @@ echo  "\">";
 			?>
 
 		</td>
-		<td colspan="1" width="46%" style="text-align:right; font-size:75%;">Precio: <?php echo str_replace(".", ",", $task['price']); ?> €</td>
+		<td colspan="1" width="46%" style="text-align:right; font-size:75%;">Precio: <?php echo str_replace(".", ",", $job['price']); ?> €</td>
 	</tr>
 </table>
 
