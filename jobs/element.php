@@ -5,7 +5,7 @@ echo  "\">";
 ?>
 
 
-<table width="100%" height="100%" border="1">
+<table style="width: 100%; height: 100%" border="1">
 	<tr height="4%">
 		<td colspan="2" width="20%" style="text-align:left; font-size:75%">ID: <?php echo $job['id'] ?></td>
 		<td colspan="2" width="60%" style="text-align:center; font-size:75%"><?php echo getPriorityName($job['priority']) ?></td>
@@ -22,13 +22,13 @@ echo  "\">";
 		<td colspan="6" style="text-align:center; font-size:90%"><?php echo $job['client'] ?></td>
 	</tr>
 	<tr height="*">
-		<td colspan="6" style="font-size:62%; vertical-align:top;">
+		<td colspan="6" style="font-size:62%; vertical-align:top;" style="width: 100%; height: 100%">
 
 				<?php 
 
 	$resultasks = allTasksFromJob($job['id']);
 
-	echo "<div class=\"tabs\">";
+	echo "<div class=\"tabs\" style=\"height: 380; background: ".getPriorityColor($job['priority'])."\">";
 	echo "<ul>";
 
 	for ($i=1; $i <= mysqli_num_rows($resultasks) ; $i++) { 
@@ -46,7 +46,10 @@ echo  "\">";
   		
   }
   
+  echo "</div>";
 ?>
+
+		</td>
 
 
 			<!-- <div class="tasks-de-task">
@@ -149,7 +152,7 @@ echo  "\">";
 
 				
 
-		</td>
+
 	</tr>
 	<tr height="4%">
 		<td colspan="3" width="50%" style="text-align:left; font-size:62%;">
