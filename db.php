@@ -235,26 +235,33 @@ function haveComment($id){
 
 function allJobs(){
 	global $conexion;
-	$que = "SELECT * FROM jb_jobs ORDER BY status DESC";
+	$que = "SELECT * FROM jb_jobs ORDER BY priority DESC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
 
 function fechanormal($fecha){
+	if ($fecha){
 	preg_match( "#([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})#", $fecha, $mifecha); 
 	$lafecha=$mifecha[3]."/".$mifecha[2]."/".$mifecha[1];
 	return $lafecha;
+	}
+	return null;
 }
 
 function fechasql($fecha){
+	if ($fecha){
 	preg_match( "#([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})#", $fecha, $mifecha);
 	$lafecha=$mifecha[3]."-".$mifecha[2]."-".$mifecha[1];
-	return $lafecha; }
+	return $lafecha;
+	}
+	return null;
+}
 
 
-function prioColor($id){
+function getPriorityColor($id){
 	global $conexion;
-	$que = "SELECT color FROM jb_status WHERE id='".$id."'";
+	$que = "SELECT color FROM jb_priority WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['color'];
@@ -281,9 +288,9 @@ global $conexion;
 
 }
 
-function getStatusName($id){
+function getPriorityName($id){
 	global $conexion;
-	$que = "SELECT name FROM jb_status WHERE id='".$id."'";
+	$que = "SELECT name FROM jb_priority WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['name'];

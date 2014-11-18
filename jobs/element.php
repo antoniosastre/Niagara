@@ -1,6 +1,6 @@
 <?php
 echo "<div class=\"element-job\" style=\"background:";
-echo prioColor($job['status']);
+echo getPriorityColor($job['priority']);
 echo  "\">";
 ?>
 
@@ -8,8 +8,8 @@ echo  "\">";
 <table width="100%" height="100%" border="1">
 	<tr height="4%">
 		<td colspan="2" width="20%" style="text-align:left; font-size:75%">ID: <?php echo $job['id'] ?></td>
-		<td colspan="2" width="60%" style="text-align:center; font-size:75%"><?php echo getStatusName($job['status']) ?></td>
-		<td colspan="2" width="20%" style="text-align:right; font-size:75%">Prio: <?php echo $job['status'] ?></td>
+		<td colspan="2" width="60%" style="text-align:center; font-size:75%"><?php echo getPriorityName($job['priority']) ?></td>
+		<td colspan="2" width="20%" style="text-align:right; font-size:75%">Prio: <?php echo $job['priority'] ?></td>
 	</tr>
 	<tr height="15%">
 		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $job['title'] ?></td>
