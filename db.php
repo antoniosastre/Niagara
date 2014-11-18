@@ -235,7 +235,7 @@ function haveComment($id){
 
 function allJobs(){
 	global $conexion;
-	$que = "SELECT * FROM jb_jobs ORDER BY priority DESC";
+	$que = "SELECT * FROM jb_jobs ORDER BY status DESC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 }
@@ -252,18 +252,93 @@ function fechasql($fecha){
 	return $lafecha; }
 
 
-
-
-
-
 function prioColor($id){
 	global $conexion;
-	$que = "SELECT color FROM hthelp_prio_color WHERE id='".$id."'";
+	$que = "SELECT color FROM jb_status WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['color'];
 
 }
+
+function taskStatusColor($id){
+
+global $conexion;
+	$que = "SELECT color FROM tsk_status WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['color'];
+
+}
+
+function taskStatusName($id){
+
+global $conexion;
+	$que = "SELECT name FROM tsk_status WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+
+}
+
+function getStatusName($id){
+	global $conexion;
+	$que = "SELECT name FROM jb_status WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+
+}
+
+function tasksFromJob($id){
+
+	global $conexion;
+	$que = "SELECT * FROM tsk_tasks WHERE id='".$id."' ORDER BY status ASC";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+
+}
+
+function getTaksTypeName($id){
+
+	global $conexion;
+	$que = "SELECT name FROM tsk_types WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['name'];
+
+}
+
+function getWorkerNameById($id){
+
+	global $conexion;
+	$que = "SELECT display_name FROM wk_worker WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['display_name'];
+
+}
+
+function allTasksFromJob($id){
+
+	global $conexion;
+	$que = "SELECT * FROM tsk_tasks WHERE job='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+
+}
+
+function priceTotalJob($id){
+
+	global $conexion;
+	$que = "SELECT SUM(price) FROM tsk_tasks WHERE job='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['SUM(price)'];
+
+}
+
+
 /*
 
 function todosclientes(){

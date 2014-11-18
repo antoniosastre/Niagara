@@ -1,27 +1,49 @@
 <?php
 echo "<div class=\"element-job\" style=\"background:";
-echo prioColor($job['priority']);
+echo prioColor($job['status']);
 echo  "\">";
 ?>
 
 
-<table width="100%" height="100%" border="0">
+<table width="100%" height="100%" border="1">
 	<tr height="4%">
-		<td colspan="3" width="40%" style="text-align:left; font-size:75%">ID: <?php echo $job['id'] ?></td>
-		<td colspan="3" width="40%" style="text-align:right; font-size:75%">Prio: <?php echo $job['priority'] ?></td>
+		<td colspan="2" width="20%" style="text-align:left; font-size:75%">ID: <?php echo $job['id'] ?></td>
+		<td colspan="2" width="60%" style="text-align:center; font-size:75%"><?php echo getStatusName($job['status']) ?></td>
+		<td colspan="2" width="20%" style="text-align:right; font-size:75%">Prio: <?php echo $job['status'] ?></td>
 	</tr>
 	<tr height="15%">
 		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $job['title'] ?></td>
 	</tr>
 	<tr height="4%">
-		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($job['date_in']) ?></td></tr></table></td>
-		<td colspan="3" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">Out:</td><td style="text-align:center;"><?php echo fechanormal($job['date_out']) ?></td></tr></table></td>
+		<td colspan="3" width="50%" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($job['date_in']) ?></td></tr></table></td>
+		<td colspan="3" width="50%" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">Out:</td><td style="text-align:center;"><?php echo fechanormal($job['date_out']) ?></td></tr></table></td>
 	</tr>
 	<tr height="10%">
 		<td colspan="6" style="text-align:center; font-size:90%"><?php echo $job['client'] ?></td>
 	</tr>
 	<tr height="*">
 		<td colspan="6" style="font-size:62%; vertical-align:top;">
+
+				<?php 
+
+	$resultasks = allTasksFromJob($job['id']);
+
+	$numtasks = 0;
+
+	if ($task = mysqli_fetch_array($resultasks)){
+		include 'tasks/element.php';
+  		$numtasks++;
+	}
+
+	 while($task = mysqli_fetch_array($resultasks)){
+  			echo "<hr \>";
+  			include 'tasks/element.php';
+  			$numtasks++;
+  		
+  }
+  
+?>
+
 
 			<!-- <div class="tasks-de-task">
 				<ul>
@@ -126,7 +148,7 @@ echo  "\">";
 		</td>
 	</tr>
 	<tr height="4%">
-		<td colspan="5" width="54%" style="text-align:left; font-size:62%;">
+		<td colspan="3" width="50%" style="text-align:left; font-size:62%;">
 			<button>Edit.</button>
 			<?php
 			//if ($count!=0) {
@@ -136,7 +158,7 @@ echo  "\">";
 			?>
 
 		</td>
-		<td colspan="1" width="46%" style="text-align:right; font-size:75%;">Precio: <?php echo str_replace(".", ",", $job['price']); ?> €</td>
+		<td colspan="3" width="50%" style="text-align:right; font-size:75%;">Precio: <?php echo str_replace(".", ",", priceTotalJob($job['id'])); ?> €</td>
 	</tr>
 </table>
 
