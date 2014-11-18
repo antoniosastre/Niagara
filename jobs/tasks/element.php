@@ -1,7 +1,7 @@
 <?php
 echo "<div class=\"element-task\" style=\"background:";
 echo taskStatusColor($task['status']);
-echo  "\">";
+echo  "\" id=\"tabs-".$task['job']."-".$numtasks."\">";
 ?>
 
 

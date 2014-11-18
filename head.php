@@ -8,3 +8,9 @@ echo "<link rel=\"stylesheet\" href=\"style.css\">";
 
 
 ?>
+
+<script>
+  $(function() {
+    $( ".tabs" ).tabs();
+  });
+  </script>

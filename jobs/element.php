@@ -28,15 +28,19 @@ echo  "\">";
 
 	$resultasks = allTasksFromJob($job['id']);
 
-	$numtasks = 0;
+	echo "<div class=\"tabs\">";
+	echo "<ul>";
 
-	if ($task = mysqli_fetch_array($resultasks)){
-		include 'tasks/element.php';
-  		$numtasks++;
+	for ($i=1; $i <= mysqli_num_rows($resultasks) ; $i++) { 
+		echo "<li><a href=\"#tabs-".$job['id']."-".$i."\">".$i."</a></li>";
 	}
 
+	echo "</ul>";
+
+	$numtasks = 1;
+
 	 while($task = mysqli_fetch_array($resultasks)){
-  			echo "<hr \>";
+
   			include 'tasks/element.php';
   			$numtasks++;
   		
