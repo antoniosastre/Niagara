@@ -14,7 +14,7 @@ height: calc(100% - 52px);
 
 overflow-y:scroll;
 
-\" id=\"task-".$task['job']."-".$numtasks."\">";
+\" id=\"task-".$task['id']."\">";
 ?>
 
 
@@ -33,7 +33,7 @@ overflow-y:scroll;
 		<td width="40%" style="text-align:right; font-size:75%">Precio: <?php echo str_replace(".", ",", $task['price']); ?> €</td>
 	</tr>
 	<tr>
-		<td colspan="2" width="20%" style="text-align:left; font-size:75%"><textarea rows="3" cols="51"><?php echo $task['comment'] ?></textarea></td>
+		<td colspan="2" width="20%" style="text-align:left; font-size:75%"><textarea rows="2" cols="51"><?php echo $task['comment'] ?></textarea></td>
 	
 	</tr>
 

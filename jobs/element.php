@@ -1,7 +1,7 @@
 <?php
 echo "<div class=\"element-job\" style=\"background:";
 echo getPriorityColor($job['priority']);
-echo  "\">";
+echo  "\" id=\"job-".$job['id']."\">";
 ?>
 
 
@@ -35,7 +35,7 @@ echo  "\">";
 
 	 while($task = mysqli_fetch_array($resultasks)){
 
-  			echo "<li><a href=\"#task-".$job['id']."-".$numtasks."\" style=\"background:".taskStatusColor($task['status']).";\">".$numtasks."</a></li>";
+  			echo "<li><a href=\"#task-".$task['id']."\" style=\"background:".taskStatusColor($task['status']).";\">".$numtasks."</a></li>";
   			$numtasks++;
   		
   }
@@ -162,7 +162,17 @@ echo  "\">";
 	</tr>
 	<tr height="4%">
 		<td colspan="3" width="50%" style="text-align:left; font-size:62%;">
-			<button>Edit.</button>
+
+			<script type="text/javascript">
+				$(document).ready(function () {
+    				$('#buttonEditJob-<?php echo $job['id']; ?>').click(function () {
+        				$('#editJob-<?php echo $job['id']; ?>').dialog();
+   	 				});
+				});
+			 </script>
+
+			<button id="buttonEditJob-<?php echo $job['id']; ?>">Edit.</button></a>
+			<div class="editJob" id="editJob-<?php echo $job['id']; ?>" title="Dialog Title" style="display:none"><iframe src="editjob.php"></iframe></div>
 			<?php
 			//if ($count!=0) {
 				//echo "<button>Imp. Trbjs.</button> ";

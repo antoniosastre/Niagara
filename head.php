@@ -8,9 +8,19 @@ echo "<link rel=\"stylesheet\" href=\"style.css\">";
 
 
 ?>
+	
+	<script type="text/javascript">
 
-<script>
-  $(function() {
-    $( ".tasks" ).tabs();
-  });
-  </script>
+	$(document).ready(function () {
+    	//$('#dialog').dialog(); 
+    	$('#buttonEditJob-1').click(function () {
+        	//alert('Ok');
+        	$('#editJob-1').dialog();
+        	//return false;
+   	 	});
+	
+  		$(function() { $( ".tasks" ).tabs(); });
+
+	});
+
+ 	 </script>
