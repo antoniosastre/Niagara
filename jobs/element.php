@@ -12,7 +12,7 @@ echo  "\">";
 		<td colspan="2" width="20%" style="text-align:right; font-size:75%">Prio: <?php echo $job['priority'] ?></td>
 	</tr>
 	<tr height="15%">
-		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $job['title'] ?></td>
+		<td colspan="6" style="text-align:center; font-size:110%"><?php echo $job['title'] ?><br><textarea rows="1" cols="51"></textarea></td>
 	</tr>
 	<tr height="4%">
 		<td colspan="3" width="50%" style="text-align:center; font-size:90%"><table width="100%" style="font-size:90%"><tr><td style="text-align:left;">In:</td><td style="text-align:center;"><?php echo fechanormal($job['date_in']) ?></td></tr></table></td>

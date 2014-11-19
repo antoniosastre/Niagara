@@ -29,6 +29,17 @@ function allmaterials(){
 	return $res;
 }
 
+function materialById($id){
+	global $conexion;
+	$que = "SELECT mt_material.id AS id, mt_material.name AS name, mt_subtype.name AS subtype, mt_material.description AS description, mt_material.comment AS comment, mt_type.name AS type
+	FROM mt_material LEFT JOIN mt_subtype ON mt_material.subtype=mt_subtype.id 
+	LEFT JOIN mt_type ON mt_subtype.type=mt_type.id
+	WHERE mt_material.id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea;
+}
+
 function subtypeNameById($id){
 	global $conexion;
 	$que = "SELECT name FROM mt_subtype WHERE id='".$id."'";
@@ -36,6 +47,14 @@ function subtypeNameById($id){
 	$linea = mysqli_fetch_array($res);
 	return $linea['name'];
 
+}
+
+function idTypeFromSubtypeId($id){
+	global $conexion;
+	$que = "SELECT type FROM mt_subtype WHERE id='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	$linea = mysqli_fetch_array($res);
+	return $linea['type'];
 }
 
 function typeNameById($id){
