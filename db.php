@@ -21,10 +21,8 @@ if (mysqli_connect_errno($conexion))
 
 function allmaterials(){
 	global $conexion;
-	$que = "SELECT mt_material.id AS id, mt_material.name AS name, mt_subtype.name AS subtype, mt_description.description AS description, mt_comment.comment AS comment, mt_type.name AS type
+	$que = "SELECT mt_material.id AS id, mt_material.name AS name, mt_subtype.name AS subtype, mt_material.description AS description, mt_material.comment AS comment, mt_type.name AS type
 	FROM mt_material LEFT JOIN mt_subtype ON mt_material.subtype=mt_subtype.id 
-	LEFT JOIN mt_description ON mt_material.id=mt_description.material
-	LEFT JOIN mt_comment ON mt_material.id=mt_comment.material
 	LEFT JOIN mt_type ON mt_subtype.type=mt_type.id
 	ORDER BY type,subtype,name ASC";
 	$res = mysqli_query($conexion,$que);
@@ -54,23 +52,10 @@ function insertMaterial($name, $subtype, $description, $comment){
 	if(!empty($name)){
 
 		global $conexion;
-		$que = "INSERT INTO mt_material (name,subtype) VALUES (\"".$name."\",".$subtype.")";
+		$que = "INSERT INTO mt_material (name,subtype,description,comment) VALUES (\"".$name."\",".$subtype.",\"".$description."\",\"".$comment."\")";
 		mysqli_query($conexion,$que);
 
-		$que = "SELECT LAST_INSERT_ID()";
-		$res = mysqli_query($conexion,$que);
-		$linea = mysqli_fetch_array($res);
-		$mate = $linea['LAST_INSERT_ID()'];
-
-		if(!empty($description)){
-			$que = "INSERT INTO mt_description (material,description) VALUES (".$mate.",\"".$description."\")";
-			mysqli_query($conexion,$que);
-		}
 		
-		if(!empty($comment)){
-			$que = "INSERT INTO mt_comment (material,comment) VALUES (".$mate.",\"".$comment."\")";
-			mysqli_query($conexion,$que);
-		}
 	}
 }
 
@@ -150,7 +135,7 @@ function materialNameById($id){
 
 function materialDescriptionById($id){
 	global $conexion;
-	$que = "SELECT description FROM mt_description WHERE material='".$id."'";
+	$que = "SELECT description FROM mt_material WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['description'];
@@ -158,7 +143,7 @@ function materialDescriptionById($id){
 
 function materialCommentById($id){
 	global $conexion;
-	$que = "SELECT comment FROM mt_comment WHERE material='".$id."'";
+	$que = "SELECT comment FROM mt_material WHERE id='".$id."'";
 	$res = mysqli_query($conexion,$que);
 	$linea = mysqli_fetch_array($res);
 	return $linea['comment'];
@@ -177,60 +162,12 @@ function updateMaterial($id,$name,$subtype,$description,$comment){
 	if(!empty($name)){
 
 		global $conexion;
-		$que = "UPDATE mt_material SET name=\"".$name."\",subtype=".$subtype." WHERE id='".$id."'";
+		$que = "UPDATE mt_material SET name=\"".$name."\",subtype=".$subtype.",comment=\"".$comment."\",description=\"".$description."\" WHERE id='".$id."'";
 		mysqli_query($conexion,$que);
 
 	}
 
 
-		if(haveDescription($id)==1){
-			if(!empty($description)){
-				$que = "UPDATE mt_description SET description=\"".$description."\" WHERE material='".$id."'";
-				mysqli_query($conexion,$que);
-			}else{
-				$que = "DELETE FROM mt_description WHERE material='".$id."'";
-				mysqli_query($conexion,$que);
-			}
-		}else{
-			if(!empty($description)){
-				$que = "INSERT INTO mt_description (material,description) VALUES (".$id.",\"".$description."\")";
-				mysqli_query($conexion,$que);
-			}
-		}
-
-		
-		if(haveComment($id)==1){
-			if(!empty($dcomment)){
-				$que = "UPDATE mt_comment SET comment=\"".$comment."\" WHERE material='".$id."'";
-				mysqli_query($conexion,$que);
-			}else{
-				$que = "DELETE FROM mt_comment WHERE material='".$id."'";
-				mysqli_query($conexion,$que);
-			}
-		}else{
-			if(!empty($comment)){
-				$que = "INSERT INTO mt_comment (material,comment) VALUES (".$id.",\"".$comment."\")";
-				mysqli_query($conexion,$que);
-			}
-		}
-
-
-}
-
-function haveDescription($id){
-	global $conexion;
-	$que = "SELECT COUNT(*) AS numb FROM mt_description WHERE material='".$id."'";
-	$res = mysqli_query($conexion,$que);
-	$linea = mysqli_fetch_array($res);
-	return $linea['numb'];
-}
-
-function haveComment($id){
-	global $conexion;
-	$que = "SELECT COUNT(*) AS numb FROM mt_comment WHERE material='".$id."'";
-	$res = mysqli_query($conexion,$que);
-	$linea = mysqli_fetch_array($res);
-	return $linea['numb'];
 }
 
 function allJobs(){
@@ -329,7 +266,7 @@ function getWorkerNameById($id){
 function allTasksFromJob($id){
 
 	global $conexion;
-	$que = "SELECT * FROM tsk_tasks WHERE job='".$id."'";
+	$que = "SELECT * FROM tsk_tasks WHERE job='".$id."' ORDER BY status ASC";
 	$res = mysqli_query($conexion,$que);
 	return $res;
 
@@ -343,6 +280,21 @@ function priceTotalJob($id){
 	$linea = mysqli_fetch_array($res);
 	return $linea['SUM(price)'];
 
+}
+
+
+function getProperties($table,$id){
+	global $conexion;
+	$que = "SELECT * FROM ".$table." WHERE task='".$id."'";
+	$res = mysqli_query($conexion,$que);
+	return $res;
+}
+
+function getAllProperties(){
+	global $conexion;
+	$que = "SELECT * FROM prp_properties";
+	$res = mysqli_query($conexion,$que);
+	return $res;
 }
 
 

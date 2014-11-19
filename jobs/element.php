@@ -28,15 +28,21 @@ echo  "\">";
 
 	$resultasks = allTasksFromJob($job['id']);
 
-	echo "<div class=\"tabs\" style=\"height: 380; background: ".getPriorityColor($job['priority'])."\">";
+	echo "<div class=\"tasks\" style=\"height: 380; background: ".getPriorityColor($job['priority'])."\">";
 	echo "<ul>";
 
-	for ($i=1; $i <= mysqli_num_rows($resultasks) ; $i++) { 
-		echo "<li><a href=\"#tabs-".$job['id']."-".$i."\">".$i."</a></li>";
-	}
+	$numtasks = 1;
+
+	 while($task = mysqli_fetch_array($resultasks)){
+
+  			echo "<li><a href=\"#task-".$job['id']."-".$numtasks."\" style=\"background:".taskStatusColor($task['status']).";\">".$numtasks."</a></li>";
+  			$numtasks++;
+  		
+  }
 
 	echo "</ul>";
 
+	$resultasks = allTasksFromJob($job['id']);
 	$numtasks = 1;
 
 	 while($task = mysqli_fetch_array($resultasks)){
